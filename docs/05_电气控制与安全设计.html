@@ -53,7 +53,7 @@
 </tr>
 </tbody></table></div>
 <p>官方依据（核对日期2026-09-16）：<a href="https://www.waveshare.com/wiki/ESP32-S3-ETH-8DI-8RO">MC01规格与例程</a>、<a href="https://docs.waveshare.net/ESP32-S3-ETH-8DI-8RO/Arduino/">MC01中文例程</a>、<a href="https://www.waveshare.com/product/esp32-s3-sim7670g-4g.htm">MC02产品页</a>、<a href="https://docs.waveshare.net/ESP32-S3-SIM7670G-4G/">MC02开发资料</a>、<a href="https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/">MC03官方开发板说明</a>、<a href="https://docs.openluat.com/air780epm/product/">MC04官方资料</a>、<a href="https://docs.openluat.com/air780epm/luatos/app/socket/mqtt/">MC04 MQTT证书例程</a>。官网入口用于核规格与索样；本轮未取得上述四款的可核实1688官方商品页，不以其他型号代替。价格、库存、交期均未报价。</p>
-<p><strong>为什么不能直接照抄示例：</strong> 微雪Arduino例程列出的PubSubClient 2.8仅支持QoS 0发布，不能满足本项目关键事件QoS 1上报要求。ESP32方案建议改用ESP-MQTT，并自己实现耐久事件队列。库的内存outbox不等于断电保存；微雪演示云已停止维护，也不能作为Liveo正式依赖。依据：<a href="https://github.com/knolleary/pubsubclient">PubSubClient维护方说明</a>、<a href="https://docs.espressif.com/projects/esp-mqtt/en/latest/esp32/">ESP-MQTT官方说明</a>。</p>
+<p><strong>示例程序与项目通信要求的适配差异：</strong> 微雪Arduino例程列出的PubSubClient 2.8仅支持QoS 0发布，不能满足本项目关键事件QoS 1上报要求。ESP32方案建议改用ESP-MQTT，并实现耐久事件队列。库的内存outbox不等于断电保存；微雪演示云已停止维护，也不能作为Liveo正式依赖。依据：<a href="https://github.com/knolleary/pubsubclient">PubSubClient维护方说明</a>、<a href="https://docs.espressif.com/projects/esp-mqtt/en/latest/esp32/">ESP-MQTT官方说明</a>。</p>
 <h3 id="联网配置与成本边界">联网配置与成本边界</h3>
 <div class="table-scroll"><table>
 <thead>

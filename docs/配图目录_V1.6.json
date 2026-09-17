@@ -6,7 +6,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub1",
-        "section": "一句话讲清楚"
+        "section": "产品概述"
       }
     ],
     "title": "同一单柜·泳池场景",
@@ -118,7 +118,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub1",
-        "section": "一句话讲清楚"
+        "section": "产品概述"
       }
     ],
     "status": "本轮重画/定位修订"
@@ -233,7 +233,7 @@
       {
         "chapter": "04_内部机械结构与传动.md",
         "anchor": "doc4-sub5",
-        "section": "5. 读区和出口不是画个框就够"
+        "section": "5. 识别区域与出料口的结构约束"
       }
     ],
     "status": "沿用流程/局部图"
@@ -653,7 +653,7 @@
       {
         "chapter": "04_内部机械结构与传动.md",
         "anchor": "doc4-sub5",
-        "section": "5. 读区和出口不是画个框就够"
+        "section": "5. 识别区域与出料口的结构约束"
       }
     ],
     "status": "本轮重画/定位修订"
@@ -685,7 +685,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub2",
-        "section": "我们已经确定什么"
+        "section": "已确定的设计要求"
       }
     ],
     "status": "沿用流程/局部图"
@@ -708,7 +708,7 @@
   {
     "number": 52,
     "file": "052_01_汇报四个风险与证据.svg",
-    "title": "汇报四个风险与证据",
+    "title": "关键风险与验证依据",
     "chapter": "01",
     "section": 5,
     "caption": "四类风险分别验证，不能用一个总体成功率覆盖。",
@@ -717,7 +717,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub5",
-        "section": "汇报时需要明确的四个核心风险"
+        "section": "关键技术风险与验证要求"
       }
     ],
     "status": "沿用流程/局部图"
@@ -728,13 +728,13 @@
     "title": "文档交付与工程交付边界",
     "chapter": "01",
     "section": 6,
-    "caption": "文档完整不等于实物可行性已经验证。",
+    "caption": "样机可行性待通过实物试验验证。",
     "group": "section",
     "references": [
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub6",
-        "section": "本文档包完成的边界"
+        "section": "当前成果与待验证事项"
       }
     ],
     "status": "沿用流程/局部图"
@@ -742,7 +742,7 @@
   {
     "number": 54,
     "file": "054_01_负责人启动决策顺序.svg",
-    "title": "负责人启动决策顺序",
+    "title": "项目启动决策顺序",
     "chapter": "01",
     "section": 7,
     "caption": "预算不沿用缺项的旧整柜估算。",
@@ -751,7 +751,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub7",
-        "section": "负责人现在可以决定的事项"
+        "section": "待决策事项"
       }
     ],
     "status": "沿用流程/局部图"
@@ -1957,7 +1957,7 @@
     "title": "从检索线索到特征比较",
     "chapter": "17",
     "section": 6,
-    "caption": "已有专利链接仅是线索；本轮配图不构成查新或法律状态意见。",
+    "caption": "专利链接作为检索线索，查新及法律状态待核验。",
     "group": "section",
     "references": [
       {
@@ -2229,7 +2229,7 @@
     "title": "公开来源能证明到哪一层",
     "chapter": "20",
     "section": 2,
-    "caption": "配图沿用本节已有核验状态，没有把本次排图描述为重新联网查证。",
+    "caption": "资料核验状态及适用范围见本节来源记录。",
     "group": "section",
     "references": [
       {
@@ -2340,7 +2340,7 @@
       {
         "chapter": "01_立项与汇报摘要.md",
         "anchor": "doc1-sub1",
-        "section": "一句话讲清楚"
+        "section": "产品概述"
       },
       {
         "chapter": "21_端到端逻辑闭环与验收矩阵.md",
@@ -2492,7 +2492,7 @@
       {
         "chapter": "04_内部机械结构与传动.md",
         "anchor": "doc4-sub5",
-        "section": "5. 读区和出口不是画个框就够"
+        "section": "5. 识别区域与出料口的结构约束"
       },
       {
         "chapter": "21_端到端逻辑闭环与验收矩阵.md",
@@ -2633,7 +2633,7 @@
   {
     "number": 159,
     "file": "159_21_本轮修订关闭与未关闭边界.svg",
-    "title": "本版修订与验证边界",
+    "title": "设计状态与验证范围",
     "chapter": "21",
     "section": 13,
     "caption": "“逻辑有出口”不等于现实必能完成；缺关键能力时选择拒绝或停用，不伪造成功。",
