@@ -44,6 +44,9 @@ def flow(n,title,sub,items,chapter,stem,caption):
 
 # One shared normalized 3D layout: x left->right, y front->rear, z floor->top.
 MODEL=json.loads((E/'单一产品布局.json').read_text())
+# 图内短名称；详细部件定义仍见机械章节，布局坐标不变。
+LABELS={'H01':'净巾料仓','H03':'M1送料带','H06':'M2接料保持','H08':'隔离取物斗',
+        'E01':'干燥电气舱','R01':'湿巾识别仓','R02':'转移分流','R03':'正常回收箱','R04':'单件异常箱'}
 REG=[]
 def finish(f,name,chapter,caption):
  f.footer('LVT-ONE / V1.6 · 同一柜体与模块坐标；布局示意，毫米尺寸、公差、容量和安全距离待工程验证。')
@@ -69,7 +72,20 @@ def front(f,ox,oy,s=0.4,inside=False,focus=None):
    # M1 and M2 share front projection: render M2 in front, show depths in side view.
    if k=='H03':continue
    rect(v['box'],v['color'] if not focus or k==focus else '#edf0f2')
-   x,y,z,w,d,h=v['box'];f.text(ox+(x+14)*s,oy+(1500-z-h/2)*s,k,34*s,INK,True)
+   x,y,z,w,d,h=v['box'];tx=ox+(x+14)*s;ty=oy+(1500-z-h/2)*s
+   if s<.3:
+    # 小定位图保留编号，名称放在右侧同图图例，避免塞入几像素高的窄带。
+    f.text(tx,ty+2,k,8.5,INK,True)
+   elif k in ['H06','H08']:
+    f.text(tx,ty+5,k,34*s,INK,True)
+    f.text(tx+40*s+30,ty+5,LABELS[k],max(13,29*s))
+   elif k=='R02':
+    # 分流箭头经过模块上半部，标注落在下半部。
+    f.text(tx,ty+10,k,34*s,INK,True)
+    f.text(tx,ty+31,LABELS[k],max(13,29*s))
+   else:
+    f.text(tx,ty-7,k,34*s,INK,True)
+    f.text(tx,ty+15,LABELS[k],max(13,29*s))
   # Sealed return chutes, not open paths across the clean zone.
   f.path(f'M{ox+750*s} {oy+990*s}V{oy+1200*s}',A,True)
   f.path(f'M{ox+630*s} {oy+1060*s}L{ox+280*s} {oy+1170*s}V{oy+1200*s}',A,True)
@@ -88,10 +104,11 @@ def side(f,ox,oy,s=.46):
  f.path(f'M{ox+80*s} {oy+430*s}H{ox+555*s}V{oy+450*s}H{ox+640*s}V{oy+505*s}',T,True)
  for i in range(4):r(435,1170+i*45,200,30,'#fff7e7')
  f.text(ox+10,oy-18,'后方 ← 沿柜深送料 → 前方',23,T,True)
- f.text(ox+18,oy+570*s,'H01 / H02 / H03',21)
- f.text(ox+18,oy+645*s,'H04分离 → H05过渡',21)
- f.text(ox+18,oy+720*s,'H06保持 → H07释放',21)
- f.text(ox+18,oy+795*s,'H08接正面领巾口',21)
+ f.text(ox+18,oy+570*s,'H01料仓 · H02底托',19)
+ f.text(ox+18,oy+625*s,'H03送料带（M1）',19)
+ f.text(ox+18,oy+685*s,'H04分离 → H05过渡',21)
+ f.text(ox+18,oy+755*s,'H06保持 → H07释放',21)
+ f.text(ox+18,oy+825*s,'H08接正面领巾口',21)
  f.text(ox+18,oy+1090*s,'下部为隔离的回收舱',21,A)
  f.text(ox+18,oy+1180*s,'此切面不共用污巾路径',21,A)
 def notes(f,x,y,items,w=610):
@@ -112,7 +129,11 @@ f.dim(160,910,600,910,'W柜宽');f.dim(95,200,95,860,'H柜高');f.dim(760,910,10
 f.text(1250,200,'俯视：后方在上',28,T,True)
 f.rect(1220,230,440,308,'#e9eef1',INK,5)
 for key in ['H01','H03','H06','E01']:
- v=MODEL['modules'][key];x,y,z,w,d,h=v['box'];f.rect(1220+x*.44,230+(700-y-d)*.44,w*.44,d*.44,v['color'],INK,3);f.text(1225+x*.44,248+(700-y-d)*.44,key,20)
+ v=MODEL['modules'][key];x,y,z,w,d,h=v['box'];f.rect(1220+x*.44,230+(700-y-d)*.44,w*.44,d*.44,v['color'],INK,3)
+# 料仓与送料带在俯视投影重合：分行标注所属层，所有标签在填色后绘制。
+for x,y,label in [(1291,274,'H01 净巾料仓'),(1291,304,'H03 M1送料带'),(1291,330,'（料仓下方）'),
+                  (1291,412,'H06 M2接料保持'),(1511,283,'E01'),(1511,309,'干燥电气舱')]:
+ f.text(x,y,label,16)
 f.text(1250,580,'前面板／住户侧 ↓',26,T,True)
 notes(f,1170,655,[('领巾口中心','x=0.36W；离底面约0.73H'),('归还口中心','x=0.74W；离底面约0.44H')],560)
 f.text(95,1010,'同一正面开口投影：领巾口与H08对齐；归还口与R01对齐；底门对应R03/R04。',26)
@@ -136,7 +157,7 @@ f.rect(500,440,44,90,'#e6bd83',A,2);f.rect(670,533,40,10,'#a4bfc8',INK,1)
 f.rect(1295,420,18,135,'#2a8788',T,1);f.rect(860,340,220,35,'#bfd1ed',BLUE,4)
 f.rect(815,480,330,38,'#fff7e8',A,7);f.path('M1313 552L1370 660H1580V700H1330V585',INK)
 f.rect(1430,620,140,36,'#fff7e8',A,4)
-f.text(175,240,'H01库存 + H02底托',28,T,True);f.text(160,640,'H03 / M1',28,T);f.text(720,640,'H06 / M2保持',28,BLUE)
+f.text(175,240,'H01库存 + H02底托',28,T,True);f.text(160,640,'H03 / M1 送料带',28,T);f.text(720,640,'H06 / M2保持',28,BLUE)
 f.text(475,375,'H04分离',25,A);f.text(650,705,'H05过渡',25);f.text(1190,370,'H07释放件',26,T);f.text(1400,755,'H08取物斗',25,T)
 f.line(210,610,540,610,arrow=True);f.line(850,610,1160,610,arrow=True)
 f.dim(720,850,1290,850,'有效保持长度 ≥ 实物长度 + 停距 + 定位余量')
@@ -192,10 +213,15 @@ for p in sorted(P.glob('04[1-8]_04_H*.svg')):
  # New bottom band including front locator; do not alter local native detail.
  f.rect(55,h-10,1690,350,'#e9f2f4',LINE,10);front(f,100,h+10,.19,True,'H01' if hid=='H02' else 'H03' if hid in ['H04','H05'] else 'H06' if hid=='H07' else hid)
  f.text(375,h+65,f'{hid} 在同一柜体中的位置',30,T,True)
- f.text(375,h+125,'左图固定为LVT-ONE；上方为该部件的局部放大，不是另一台柜。',26)
- f.text(375,h+180,'送料方向统一：从柜后向柜前；M1、M2与H07沿柜深排列。',26)
- f.text(375,h+235,'H01—H08全部位于左上净巾舱；图02、17、19定义整柜位置。',26)
+ for i,key in enumerate(['H01','H06','H08','E01','R01','R02','R03','R04']):
+  f.text(375+(i%4)*330,h+125+(i//4)*55,key+' '+LABELS[key],21)
+ f.text(375,h+235,'同柜定位；净巾从柜后向柜前输送。H01—H08位于左上净巾舱，位置见图02、17、19。',22)
  s=s.replace(match[0],f'height="{h+365}" viewBox="0 0 1800 {h+365}"').replace('</svg>',''.join(f.s)+'</svg>')
  p.write_text(s); REG.append({'number':int(p.name[:3]),'file':p.name,'title':hid+' 局部详图与统一定位','chapter':'04','caption':'原生局部详图追加同一柜体定位；不以局部放大框作为外壳。'})
-(E/'本轮结构图清单.json').write_text(json.dumps(REG,ensure_ascii=False,indent=2))
+# 保留其他绘图源维护的条目，只更新本脚本生成的图片记录。
+registry=E/'本轮结构图清单.json'
+previous=json.loads(registry.read_text()) if registry.exists() else []
+updates={item['file']:item for item in REG}
+merged=[updates.pop(item['file'],item) for item in previous]+list(updates.values())
+registry.write_text(json.dumps(merged,ensure_ascii=False,indent=2))
 print('Generated/updated',len(REG),'technical SVG assets')
