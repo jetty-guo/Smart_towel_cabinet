@@ -1,0 +1,66 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>T06｜I/O与接线核验</title><link rel="stylesheet" href="../../assets/site.css"><link rel="icon" href="data:,"></head><body><div class="site-nav" aria-label="资料导航"><a href="../../index.html">资料总首页</a><a href="../../docs/index.html">从0到1文档总包</a><a href="../../docs/图册总览.html">统一产品图册</a><a href="../../patent/index.html">专利技术交底书</a></div><main><article><h1 id="t06io与接线核验">T06｜I/O与接线核验</h1>
+<p>适用：G2—G3／电气、控制。</p>
+<p><strong>空白表示未填写，不代表0、不适用或已通过。每次/每台/每批复制本表形成独立记录，保留原始证据。</strong></p>
+<!-- form-figure -->
+<h2 id="填表参考图">填表参考图</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/066_05_I_O%E9%80%90%E7%82%B9%E4%BD%8D%E7%BD%AE%E4%B8%8E%E4%BD%9C%E7%94%A8.svg" alt="066_05_I_O逐点位置与作用"></p>
+<p><em>按图逐点核对信号功能；针脚、电平和断线行为必须从批准接线图填写。</em></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>填写要求</th>
+<th>实际记录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设备</td>
+<td>序列号、电气图版本、固件版本、仪器及人员</td>
+<td></td>
+</tr>
+<tr>
+<td>点位</td>
+<td>S0/S1/S2/S3/G1/G2/E1/E2/I1/I2/R0/R1/R2/R3/B1/B2/L1</td>
+<td></td>
+</tr>
+<tr>
+<td>接线</td>
+<td>功能、连接器/针脚、线号、输入/输出、电平、上拉、屏蔽/接地</td>
+<td></td>
+</tr>
+<tr>
+<td>正常行为</td>
+<td>物理状态、正常电平、软件状态、标定阈值和允许时序</td>
+<td></td>
+</tr>
+<tr>
+<td>故障行为</td>
+<td>断线、短路/矛盾、常亮/常灭、失电、CPU重启的预期</td>
+<td></td>
+</tr>
+<tr>
+<td>实测</td>
+<td>实际反馈、时间、日志及接线检查结果</td>
+<td></td>
+</tr>
+<tr>
+<td>放行</td>
+<td>偏差、整改版本、复验、检查人和批准人</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="提交前检查">提交前检查</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 未选点位标明不采用及替代功能</li>
+<li><input disabled="" type="checkbox"> 普通I/O不自动当作安全认证</li>
+<li><input disabled="" type="checkbox"> 市电由合资格人员核验</li>
+</ul>
+<p>记录文件命名：表号_项目或样机_日期_批次。所有测量填写单位与方法；不适用项写明原因、替代处理及批准人。</p>
+<h3 id="v15主板与联网核验">V1.5主板与联网核验</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 8DI等板载点数与全柜I/O预算逐点核对；编码器／模拟输入不当普通DI替代。</li>
+<li><input disabled="" type="checkbox"> SIM座、4G模组、天线及供电峰值与实际NET配置一致。</li>
+<li><input disabled="" type="checkbox"> 证书身份与柜体序列号一致；切网保持同一clientId和活动任务。</li>
+<li><input disabled="" type="checkbox"> 网络失败不影响本地安全停止；继电器不做高频PWM。</li>
+</ul>
+</article></main></body></html>

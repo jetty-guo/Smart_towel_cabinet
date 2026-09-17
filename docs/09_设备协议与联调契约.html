@@ -1,0 +1,426 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>09｜设备协议与联调契约</title><link rel="stylesheet" href="../assets/site.css"><link rel="icon" href="data:,"></head><body><div class="site-nav" aria-label="资料导航"><a href="../index.html">资料总首页</a><a href="../docs/index.html">从0到1文档总包</a><a href="../docs/图册总览.html">统一产品图册</a><a href="../patent/index.html">专利技术交底书</a></div><main><article><h1 id="09设备协议与联调契约">09｜设备协议与联调契约</h1>
+<p>状态：可用于供应商协议评审的建议契约，不是已发布Liveo接口。设备与服务端需共同冻结版本后实施。V1.4将协议建议稿修订为1.2-draft，尚未部署。</p>
+<h2 id="1-逻辑接口">1. 逻辑接口</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>输入</th>
+<th>输出／约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CreateIssue</td>
+<td>cabinetRef、clientRequestId</td>
+<td>issueSessionId、当前状态；账号由认证获得</td>
+</tr>
+<tr>
+<td>QueryIssue</td>
+<td>issueSessionId</td>
+<td>本人授权范围内状态、可执行下一步</td>
+</tr>
+<tr>
+<td>RequestCancel</td>
+<td>issueSessionId</td>
+<td>取消请求已接收或当前不允许；不是直接取消成功</td>
+</tr>
+<tr>
+<td>SubmitDeviceEvent</td>
+<td>设备认证、标准事件</td>
+<td>eventId、RECEIVED／APPLIED／REVIEW_REQUIRED及可查询结果；或明确拒绝</td>
+</tr>
+<tr>
+<td>QueryCommand</td>
+<td>commandId</td>
+<td>柜端当前状态与证据版本，不触发电机</td>
+</tr>
+<tr>
+<td>ReconcileTask</td>
+<td>授权维护身份、任务、实物证据、处理原因</td>
+<td>受控补正结果和审计标识</td>
+</tr>
+</tbody></table></div>
+<p><strong>设备到Liveo的命令、事件、状态查询与应用确认，强制支持MQTT 3.1.1 over TLS；MQTT 5.0为可选扩展，不能作为唯一接入方式。</strong> 设备主动向Liveo指定Broker出站连接，基础端口8883可配置。HTTPS仅用于App平台接口、受控升级和资料传输等独立用途，不能替代设备MQTT必选项。当前是待实现的接口要求，未核定Liveo已有Broker或适配服务。</p>
+<!-- module-figure-81 -->
+<p><strong>子模块图｜逻辑接口与参与者</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/081_09_%E9%80%BB%E8%BE%91%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8F%82%E4%B8%8E%E8%80%85.svg" alt="逻辑接口与参与者"></p>
+<p><em>读图说明：HTTP应答或QoS不等于物理交付成功。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>补充逻辑操作</th>
+<th>输入语义</th>
+<th>输出／约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ConfirmHeldAsset</td>
+<td>issueSessionId、候选EPC、装载批次、物理保持证据、版本</td>
+<td>原子核资产准入和占用；拒绝或返回ReleasePermit</td>
+</tr>
+<tr>
+<td>ReleasePermit</td>
+<td>原任务／命令／设备／通道／资产／EPC／assetCycleVersion／assignmentVersion、有效期</td>
+<td>一次性本条业务许可；柜端落盘后仍须本地安全通过</td>
+</tr>
+<tr>
+<td>CreateReturnSession</td>
+<td>认证会话、设备、clientRequestId</td>
+<td>独立回执；无需领用额度；柜端接管前不显示已收件</td>
+</tr>
+<tr>
+<td>CancelCommand</td>
+<td>原commandId、内容摘要、归属版本</td>
+<td>与开始意图原子竞争；落盘取消封禁后才CANCEL_CONFIRMED</td>
+</tr>
+<tr>
+<td>QueryTaskResult</td>
+<td>原任务／回执、授权身份</td>
+<td>物理阶段、业务结果、reasonCode、caseId、evidenceRef；不触发动作</td>
+</tr>
+</tbody></table></div>
+<p>待投放归还会话的终止同样需要柜端确认无物、入口关闭并留下终止记录；迟到开入口命令不得重开。所有操作均为待开发契约，不表示Liveo已有同名接口。</p>
+<p><strong>许可幂等与续期：</strong> 同一ConfirmHeldAsset请求、资产和原任务返回同一个许可结果，不生成新资产轮次。更改EPC或载荷使用同请求标识须报冲突。续期保留同一物理执行身份；只有柜端确认未开始释放并耐久撤销旧许可后，才能提交新许可版本；失联时不能推定撤销成功。原任务／资产占用在业务终结或受控补正前保持，QC或清单变更不得绕过活动许可。</p>
+<h3 id="mqtt采购硬要求v15与联网方式无关">MQTT采购硬要求（V1.5，与联网方式无关）</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>必须交付的行为</th>
+<th>不接受的替代说法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平台可控</td>
+<td>Broker域名、端口、CA、设备身份、Topic可配置；断开厂家云仍能与Liveo测试Broker运行</td>
+<td>只能连厂家小程序／私有云</td>
+</tr>
+<tr>
+<td>TLS</td>
+<td>TLS 1.2或以上，校验服务器证书链与域名；每台唯一客户端证书做双向认证；私钥受保护、可轮换／撤销</td>
+<td>只写“SSL”、跳过证书校验、全柜共用密码</td>
+</tr>
+<tr>
+<td>双向消息</td>
+<td>关键命令、事件、应用确认均QoS 1；订阅也请求QoS 1；收到SUBACK后才声明接入就绪</td>
+<td>TCP透传、仅订阅QoS 1却用QoS 0发布事件</td>
+</tr>
+<tr>
+<td>防止旧命令复活</td>
+<td>所有动作命令retain=false；Broker限制命令保留，柜端拒绝保留命令；每次都验证有效期、assignmentVersion及channelEpoch</td>
+<td>重连后收到什么就执行什么</td>
+</tr>
+<tr>
+<td>稳定身份</td>
+<td>一个设备一个固定clientId，一个逻辑活动连接；同ID并发连接触发故障诊断；网络切换不产生新的业务命令ID</td>
+<td>换网即建新设备／新发放任务</td>
+</tr>
+<tr>
+<td>会话与重发</td>
+<td>MQTT 3.1.1使用受控持久会话；Broker队列有容量与保留时限；设备去重和事件耐久日志独立于MQTT会话</td>
+<td>把Broker缓存或内存outbox当作断电日志</td>
+</tr>
+<tr>
+<td>业务确认</td>
+<td>PUBACK仅为MQTT确认；RECEIVED仅为平台原件耐久接收；APPLIED或REVIEW_REQUIRED才给业务结论</td>
+<td>把QoS 1、连上网或收到消息当作毛巾已取走／已归还</td>
+</tr>
+<tr>
+<td>离线与满队列</td>
+<td>已接受任务按21章许可和本地安全收尾；关键事件耐久存储直到应用接收；空间不足拒绝新动作并告警</td>
+<td>为腾空间静默丢失未确认事件；离线新建领用</td>
+</tr>
+<tr>
+<td>运维</td>
+<td>可配置心跳与LWT、指数退避和抖动重连、证书到期预警；时钟不可信拒绝新物理命令</td>
+<td>网络故障触发无条件整机重启／重复吐巾</td>
+</tr>
+</tbody></table></div>
+<p>Topic建议命名（待双方冻结；不是已上线地址）：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>发布→订阅</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>liveo/towel/v1/devices/{deviceId}/command</code></td>
+<td>Liveo适配服务→本设备</td>
+<td>发放、归还入口、释放／路线许可、取消、结果查询；均带请求标识和期限</td>
+</tr>
+<tr>
+<td><code>liveo/towel/v1/devices/{deviceId}/event</code></td>
+<td>本设备→Liveo适配服务</td>
+<td>物理证据、命令接受／拒绝／查询应答；eventId及版本可追溯</td>
+</tr>
+<tr>
+<td><code>liveo/towel/v1/devices/{deviceId}/ack</code></td>
+<td>Liveo适配服务→本设备</td>
+<td>原eventId的RECEIVED／APPLIED／REVIEW_REQUIRED；丢失时查询原结果</td>
+</tr>
+<tr>
+<td><code>liveo/towel/v1/devices/{deviceId}/status</code></td>
+<td>本设备／LWT→平台</td>
+<td>在线及诊断状态；不能代替业务确认；首期也不使用retained消息</td>
+</tr>
+</tbody></table></div>
+<p>Broker按证书映射deviceId并限制上述发布／订阅方向，禁止设备通配订阅其他设备；Liveo服务端仍按当前设备归属与assignmentVersion复核授权。新项目迁移必须先结清／冻结旧任务、撤销旧会话与待投递旧命令，按16／21章受控切换；不能只改Topic里的字符串。平台端发送队列和事件消费均需耐久化；适配服务崩溃后恢复原commandId/eventId，不能仅依赖MQTT自动确认。状态查询及应答关联原任务，绝不重新触发动作。</p>
+<p><img src="%E5%9B%BE%E7%89%87/161_09_MQTT%E6%B6%88%E6%81%AF%E4%B8%8E%E4%B8%9A%E5%8A%A1%E7%A1%AE%E8%AE%A4.svg" alt="MQTT消息确认与业务闭环"></p>
+<p><em>图161：两层确认分开；Wi‑Fi／4G切换只影响传输，不改变任务、实物和账号绑定。</em></p>
+<h4 id="网络验收子用例-net01net08计划尚未执行">网络验收子用例 NET01—NET08（计划，尚未执行）</h4>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>子用例</th>
+<th>故障注入／场景</th>
+<th>验收结论必须证明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NET01</td>
+<td>各交付网络配置连接Liveo测试Broker；Wi‑Fi重启，蜂窝版换真实SIM／APN</td>
+<td>每个实际交付配置均能双向MQTT/TLS；未选配网络记不适用并说明</td>
+</tr>
+<tr>
+<td>NET02</td>
+<td>错CA、错域名、过期／撤销客户端证书；订阅他柜Topic</td>
+<td>连接／访问被拒；本地不放行新任务；合法证书恢复可对账</td>
+</tr>
+<tr>
+<td>NET03</td>
+<td>QoS 1同commandId重复、同ID异载荷、订阅恢复收到旧命令</td>
+<td>相同命令只执行一次；冲突／过期／旧归属拒绝，保留记录</td>
+</tr>
+<tr>
+<td>NET04</td>
+<td>注入retained动作命令；重启设备重新订阅</td>
+<td>拒绝动作，日志可追；修正配置清除残留后按新合法任务恢复</td>
+</tr>
+<tr>
+<td>NET05</td>
+<td>PUBACK已到但RECEIVED丢失；RECEIVED已到但APPLIED丢失；服务端重启</td>
+<td>依原eventId补传／查询，账务只应用一次；App保持真实处理中／待核验</td>
+</tr>
+<tr>
+<td>NET06</td>
+<td>送料、保持、释放、取走、归还转移各阶段断网；选配双链路切换</td>
+<td>遵循21章许可规则，保持原任务；不再发、不误销账；恢复后实物与账一致</td>
+</tr>
+<tr>
+<td>NET07</td>
+<td>事件队列将满、断电、存储损坏、重复clientId</td>
+<td>不丢未确认物理事实；无法耐久记录则停新任务；损坏进入核验，不重放电机</td>
+</tr>
+<tr>
+<td>NET08</td>
+<td>运营商弱信号／欠费／SIM移除、DNS故障、证书轮换、时钟偏差</td>
+<td>诊断区分原因；由维护人员恢复并对账后解除限制；轮换不丢活动任务</td>
+</tr>
+</tbody></table></div>
+<p>NET子用例补充原C01—C44的网络与恢复验证，不改变原44项编号。总计另有8个网络验收场景，全部待台架／FAT／SAT执行；结果填T13，具体网络、固件、证书版本、Broker日志、设备日志和对应业务记录一起归档。阈值（重连时间、队列容量、离线保留期、时钟容差）须T02冻结，空值不能判通过。</p>
+<h2 id="2-发放命令示例">2. 发放命令示例</h2>
+<p>以下为虚构标识，禁止包含真实凭据。项目与账号授权在服务端完成，柜端不接收客户端任意拼出的命令。</p>
+<pre><code class="language-json">{
+  &quot;protocolVersion&quot;: &quot;1.2-draft&quot;,
+  &quot;commandId&quot;: &quot;CMD-DEMO-001&quot;,
+  &quot;issueSessionId&quot;: &quot;ISSUE-DEMO-001&quot;,
+  &quot;deviceId&quot;: &quot;CAB-DEMO-001&quot;,
+  &quot;channelId&quot;: &quot;CLEAN-01&quot;,
+  &quot;action&quot;: &quot;ISSUE_ONE&quot;,
+  &quot;issuedAt&quot;: &quot;2026-09-16T06:00:00Z&quot;,
+  &quot;expiresAt&quot;: &quot;2026-09-16T06:00:30Z&quot;,
+  &quot;expectedChannelEpoch&quot;: 42,
+  &quot;assignmentVersion&quot;: 3,
+  &quot;quantity&quot;: 1
+}
+</code></pre>
+<p>示例30秒有效期只是演示。有效期用于判断是否接受新命令；已接受任务执行中到期，不得直接取消已发生的物理事实。时钟偏差与离线策略须双方定义；无法可信判断新指令有效期时拒绝新发放。</p>
+<p>设备验证：身份/目标匹配、协议兼容、有效期、状态版本、quantity=1、通道可用。持久化接受与执行记录后才能动作。相同commandId及相同内容返回已有状态；同ID不同内容报冲突。</p>
+<!-- module-figure-82 -->
+<p><strong>子模块图｜发放命令接受与拒绝分支</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/082_09_%E5%8F%91%E6%94%BE%E5%91%BD%E4%BB%A4%E6%8E%A5%E5%8F%97%E4%B8%8E%E6%8B%92%E7%BB%9D%E5%88%86%E6%94%AF.svg" alt="发放命令接受与拒绝分支"></p>
+<p><em>读图说明：已接受命令到期不抹去物理事实；未知结果不能换ID重发。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<p>版本分工：taskStateVersion对同任务单调递增，重启不归零；channelEpoch在清场与平台结论均确认后更新，用于拒绝上一通道周期指令；assignmentVersion在受控项目归属变更后更新。bootId仅诊断，不能充当去重边界。许可有效期无法可信判断时保持不释放；平台离线不能单方面假定已撤销柜端许可。</p>
+<h2 id="3-事件示例">3. 事件示例</h2>
+<pre><code class="language-json">{
+  &quot;protocolVersion&quot;: &quot;1.2-draft&quot;,
+  &quot;eventId&quot;: &quot;EVT-DEMO-006&quot;,
+  &quot;commandId&quot;: &quot;CMD-DEMO-001&quot;,
+  &quot;issueSessionId&quot;: &quot;ISSUE-DEMO-001&quot;,
+  &quot;deviceId&quot;: &quot;CAB-DEMO-001&quot;,
+  &quot;channelId&quot;: &quot;CLEAN-01&quot;,
+  &quot;bootId&quot;: &quot;BOOT-DEMO-01&quot;,
+  &quot;sequence&quot;: 6,
+  &quot;taskStateVersion&quot;: 6,
+  &quot;channelEpoch&quot;: 42,
+  &quot;assignmentVersion&quot;: 3,
+  &quot;assetCycleVersion&quot;: 8,
+  &quot;releasePermitRef&quot;: &quot;PERMIT-DEMO-001&quot;,
+  &quot;eventType&quot;: &quot;TAKEN_CONFIRMED&quot;,
+  &quot;observedAt&quot;: &quot;2026-09-16T06:00:09Z&quot;,
+  &quot;assetRef&quot;: &quot;TOWEL-DEMO-008&quot;,
+  &quot;epc&quot;: &quot;300000000000000000000008&quot;,
+  &quot;evidence&quot;: {
+    &quot;releasePassageConfirmed&quot;: true,
+    &quot;pickupOccupiedThenCleared&quot;: true,
+    &quot;safetyStateValid&quot;: true,
+    &quot;sensorTraceRef&quot;: &quot;TRACE-DEMO-001&quot;
+  },
+  &quot;firmwareVersion&quot;: &quot;prototype-1.0&quot;,
+  &quot;configVersion&quot;: &quot;calibration-demo-1&quot;
+}
+</code></pre>
+<p>布尔字段是柜端按已验证规则得到的摘要，不是允许任意信号直接宣称成功；必须保留可追查时序证据。observedAt与服务器接收时间分开；sequence按任务严格递增，重启继续，bootId用于诊断，不能因重启把任务序号归零后覆盖旧事件。</p>
+<!-- module-figure-83 -->
+<p><strong>子模块图｜事件数据怎样形成可追溯证据</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/083_09_%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%80%8E%E6%A0%B7%E5%BD%A2%E6%88%90%E5%8F%AF%E8%BF%BD%E6%BA%AF%E8%AF%81%E6%8D%AE.svg" alt="事件接收与业务确认分开"></p>
+<p><em>读图说明：布尔字段只是经验证规则的摘要，不能随意置true宣称完成。</em></p>
+<p><strong>同ID载荷冲突：</strong> 同eventId且内容摘要相同才按重复事件返回原结果；不同摘要返回EVENT_CONTENT_CONFLICT并保留冲突证据，不覆盖原事件。身份有效但状态、序号或轮次不合法的物理事件须耐久隔离并建立核验记录；拒绝业务应用不等于否认物理已发生。未经认证的内容进入独立安全审计，不进入住户账务。</p>
+<h2 id="4-重试与恢复规则">4. 重试与恢复规则</h2>
+<ul>
+<li>柜端落盘事件后发送；平台原件耐久保存后回RECEIVED，业务提交后回APPLIED，异常回REVIEW_REQUIRED及caseId。重复事件返回当前持久化结果，不重复应用；两种确认不能混为一谈。</li>
+<li>未确认事件保留，采用有上限的退避重传；后台长期补传不能阻塞本地安全动作。</li>
+<li>本地存储容量按预期离线时长和峰值事件量计算，达到高水位报警，无法可靠写入时停止接新任务。</li>
+<li>平台命令超时先QueryCommand；只能重投同一commandId，不产生新ID绕过去。</li>
+<li>重启读取未终结任务、传感器与实物；无法恢复确定性时锁定通道并待核验。</li>
+<li>升级只能在无活动任务、物体位置明确时开始；升级失败保留已执行历史并有可验证回退路径。</li>
+</ul>
+<!-- module-figure-84 -->
+<p><strong>子模块图｜超时、补传与重启恢复</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/084_09_%E8%B6%85%E6%97%B6%E3%80%81%E8%A1%A5%E4%BC%A0%E4%B8%8E%E9%87%8D%E5%90%AF%E6%81%A2%E5%A4%8D.svg" alt="收到事件之后仍有结果闭环"></p>
+<p><em>读图说明：安全动作不等待网络；存储不能可靠写入时停止接新任务。</em></p>
+<!-- figure-28 -->
+<h3 id="图28断网与重试为什么不能再发一条">图28｜断网与重试：为什么不能再发一条</h3>
+<p><img src="%E5%9B%BE%E7%89%87/28_%E8%B6%85%E6%97%B6%E9%87%8D%E8%AF%95%E4%B8%8E%E5%B9%82%E7%AD%89%E6%97%B6%E5%BA%8F.svg" alt="断网与重试：为什么不能再发一条"></p>
+<p><em>“应答丢失”箭头说明事件，不表示平台收到成功。重启时若无法确认物体或执行结果进入待核验；不能凭缓存锁过期创建新物理任务。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<p>QueryCommand返回NOT_FOUND仍保留任务与预留；取消必须柜端持久化封禁并确认。重投原ID也须核封禁、归属与通道版本。执行／取消历史留存覆盖签核重放窗口，未证明安全封存前不清空；D18签核升级、备份恢复和凭据迁移。柜端损坏丢日志转人工核验，不在新控制器重放旧命令。</p>
+<p><img src="%E5%9B%BE%E7%89%87/150_21_%E5%8F%96%E6%B6%88%E4%B8%8E%E8%BF%9F%E5%88%B0%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BA%92%E6%96%A5.svg" alt="取消与迟到命令的互斥"></p>
+<p><em>取消与开始只有一个先赢；查询NOT_FOUND和应答超时都不证明取消成功。</em></p>
+<p><strong>业务结果通知丢失：</strong> RECEIVED后可停止原事件重传，但柜端／App仍按原taskId或returnSessionId调用QueryTaskResult，直到APPLIED或REVIEW_REQUIRED；状态、caseId和证据引用可重复查询。平台由持久化待处理事件恢复业务提交和结果通知，不依赖单次推送。超过T_settle仍未确定时由平台告警建单、值班人员接管，保留预留及受影响通道。平台T_settle从原事件耐久接收时起算；柜端另外记录收到RECEIVED后的本地等待时长，跨时钟不直接相减。T_settle、查询退避与升级时限由D18/D17在联调前签核；无限查询不是处置出口。</p>
+<h2 id="5-标准故障语义">5. 标准故障语义</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>错误</th>
+<th>含义</th>
+<th>是否允许自动新发放</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NOT_AUTHORIZED</td>
+<td>账号／项目／设备范围不合法</td>
+<td>否</td>
+</tr>
+<tr>
+<td>CHANNEL_BUSY</td>
+<td>有未结束任务</td>
+<td>否</td>
+</tr>
+<tr>
+<td>QUOTA_UNAVAILABLE</td>
+<td>额度不足或有预留</td>
+<td>否</td>
+</tr>
+<tr>
+<td>IDENTITY_AMBIGUOUS</td>
+<td>无标签／多标签／资产冲突</td>
+<td>否</td>
+</tr>
+<tr>
+<td>JAM_DETECTED</td>
+<td>运动与物体过程异常</td>
+<td>否</td>
+</tr>
+<tr>
+<td>DELIVERY_UNCERTAIN</td>
+<td>交付证据不足</td>
+<td>否</td>
+</tr>
+<tr>
+<td>BIN_NOT_READY</td>
+<td>回收箱缺失／满载</td>
+<td>否，停止对应回收路径</td>
+</tr>
+<tr>
+<td>COMMAND_CONFLICT</td>
+<td>同ID内容冲突</td>
+<td>否</td>
+</tr>
+<tr>
+<td>LOCAL_STORAGE_UNSAFE</td>
+<td>无法可靠保存任务或事件</td>
+<td>否</td>
+</tr>
+</tbody></table></div>
+<p>数值业务码依现有Liveo规范登记，不在文档里编造与现有码冲突的编号。</p>
+<!-- module-figure-85 -->
+<p><strong>子模块图｜故障码如何决定处理路径</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/085_09_%E6%95%85%E9%9A%9C%E7%A0%81%E5%A6%82%E4%BD%95%E5%86%B3%E5%AE%9A%E5%A4%84%E7%90%86%E8%B7%AF%E5%BE%84.svg" alt="故障码如何决定处理路径"></p>
+<p><em>读图说明：正式数值业务码要按Liveo现行规范登记，图中只列语义。</em></p>
+<h2 id="6-联调必须提供">6. 联调必须提供</h2>
+<p>可独立启动的设备模拟器／协议样例、真实设备日志导出、指令接收与物理完成分离的回执、断网补传演示、重复命令演示、设备凭据更换、版本兼容表。供应商只给“远程开门接口”不足以满足本方案。</p>
+<p>台架先联调协议和故障注入，再连接授权测试环境。禁止用生产账号、生产设备或真实住户试错。</p>
+<!-- module-figure-86 -->
+<p><strong>子模块图｜供应商联调资料的使用顺序</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/086_09_%E4%BE%9B%E5%BA%94%E5%95%86%E8%81%94%E8%B0%83%E8%B5%84%E6%96%99%E7%9A%84%E4%BD%BF%E7%94%A8%E9%A1%BA%E5%BA%8F.svg" alt="供应商联调资料的使用顺序"></p>
+<p><em>读图说明：只有远程开门接口不满足本项目任务与物理证据契约。</em></p>
+<h2 id="7-归还事件契约补充">7. 归还事件契约补充</h2>
+<blockquote>
+<p><strong>读图前置条件（V1.4）：</strong> 归还图中的“核验”包含锁定原借用轮次与移交证据；离线仅允许已有回执任务收尾，不允许首期新离线接收。</p>
+</blockquote>
+<p>归还另用returnSessionId，不复用issueSessionId表达一次新的物理回收。事件共用eventId、deviceId、bootId、sequence、taskStateVersion、channelEpoch、assignmentVersion、版本与证据字段。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>物理与业务含义</th>
+<th>必须携带的关联</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RETURN_ACCEPTED</td>
+<td>物体进入受控仓、外侧已隔离，尚未销账</td>
+<td>returnSessionId、仓位、入口与物体证据</td>
+</tr>
+<tr>
+<td>RETURN_IDENTIFIED</td>
+<td>得到候选身份，尚未完成移交</td>
+<td>候选EPC/assetRef及读取证据；平台核验状态、matchedIssueSessionId与assetCycleVersion，未确定则留待核验</td>
+</tr>
+<tr>
+<td>RETURN_TRANSFERRED</td>
+<td>已不可回掏地进入指定接收位置</td>
+<td>targetBinId或isolationSlotId、转移/接收/复位证据</td>
+</tr>
+<tr>
+<td>RETURN_PENDING_REVIEW</td>
+<td>无法确定身份或移交结果</td>
+<td>reasonCode、物体所在位置、待核验回执</td>
+</tr>
+<tr>
+<td>RETURN_RECONCILED</td>
+<td>平台核验完成或人工受控补正</td>
+<td>原归还任务、资产与原借用关联、处理依据及审计引用</td>
+</tr>
+</tbody></table></div>
+<p>设备上报RETURN_TRANSFERRED不直接代表App可显示归还成功；平台需核对身份、有效借用与移交证据并持久化结果。离线或身份不明返回待同步/待核验。客户端操作者与原借用人是不同语义，不可互相代替。正常容器ID用于物品交接；未知物体进入异常隔离时必须有可逐件追踪的隔离位或保留仓位。</p>
+<!-- module-figure-87 -->
+<p><strong>子模块图｜归还事件与平台最终确认</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/087_09_%E5%BD%92%E8%BF%98%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%B9%B3%E5%8F%B0%E6%9C%80%E7%BB%88%E7%A1%AE%E8%AE%A4.svg" alt="归还事件与平台最终结果"></p>
+<p><em>读图说明：任一步不明转RETURN_PENDING_REVIEW；离线移交不能直接显示归还成功。</em></p>
+<!-- figure-29 -->
+<h3 id="图29归还与销账投放人不一定是借用人">图29｜归还与销账：投放人不一定是借用人</h3>
+<p><img src="%E5%9B%BE%E7%89%87/29_%E5%BD%92%E8%BF%98%E7%A1%AE%E8%AE%A4%E4%B8%8E%E9%94%80%E8%B4%A6%E6%97%B6%E5%BA%8F.svg" alt="归还：先建回执，再锁轮次与路线"></p>
+<p><em>只有平台完成核验后才能显示归还成功。无法识别或离线时形成独立回执，不按当前投放人直接解除借用。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<p>归还先到等待原借出证据，旧归还晚到只作用于锁定原轮次。首期acceptNewOfflineReturn=false；在线回执被柜端接受后才允许安全收尾与存证，未核验物体逐件隔离。收到RETURN_TRANSFERRED不释放借用；平台APPLIED且结论为归还成功后才向用户确认。</p>
+<p><img src="%E5%9B%BE%E7%89%87/151_21_%E5%BD%92%E8%BF%98%E5%85%88%E5%88%B0%E4%B8%8E%E6%97%A7%E4%BA%8B%E4%BB%B6%E6%99%9A%E5%88%B0.svg" alt="归还先到与旧事件晚到"></p>
+<p><em>投放人不等于原借用人；禁止按事件到达时“最新一笔借用”随意销账。</em></p>
+<p><strong>回收确认握手补充：</strong> RETURN_IDENTIFIED仅上报候选。正常路由开放前，平台给出本回执对应资产及原轮次的核验结果，柜端持久化该结果并核本地路由安全；结果未知／失联走保持或逐件隔离。若断网发生在正常转移已经不可逆开始之后，只安全完成既定转移、记录实际容器位置并冻结该批正常收运／重发；必要的卫生处置只能走07章有保管责任的封存异常交接，不能反向搬回或伪记为隔离位；恢复后核验原回执再解除限制。平台最终应用前仍显示待同步。</p>
+<p><strong>ReturnRoutePermit（建议逻辑契约）：</strong> 绑定returnSessionId、assetRef或unknownItemRef、matchedIssueSessionId／assetCycleVersion（未知则明确为空且仅允许隔离）、deviceId、channelEpoch、assignmentVersion、targetBinId／isolationSlotId、binCycle及capacityReservationId、有效期。平台批准正常路线时先锁定原借用轮次，柜端落盘并核到位及本地安全后才转移；容器缺失、换箱／批次改变或容量不足均使未开始的路线许可失效。容量预留与路线授权原子更新，终止会话仅在确认未移交后释放预留；完成后转为实际占用。不可逆转移开始后不得换箱或重分配该预留，必须按真实接收结果对账。</p>
+</article></main></body></html>

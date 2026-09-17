@@ -1,0 +1,482 @@
+[
+  {
+    "id": "C01",
+    "name": "正常全循环",
+    "trigger": "领→取→还→洗→补→同资产再领",
+    "expected": "第二轮使用新任务和借用轮次；库存、账务、额度一致",
+    "owner_role": "整机＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C02",
+    "name": "接受前拒绝",
+    "trigger": "账号或设备范围不合法",
+    "expected": "无动作、无借用、无孤立预留",
+    "owner_role": "Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C03",
+    "name": "并发额度",
+    "trigger": "同账号／Unit同时请求两个柜",
+    "expected": "按额度主体原子裁定，不超额放行",
+    "owner_role": "Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C04",
+    "name": "并发通道",
+    "trigger": "两个用户抢同通道",
+    "expected": "一个执行所有者，其余明确忙",
+    "owner_role": "固件＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C05",
+    "name": "重复命令",
+    "trigger": "同ID同内容重投及重启后重投",
+    "expected": "不再次驱动，返回原状态",
+    "owner_role": "固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C06",
+    "name": "命令冲突",
+    "trigger": "同ID不同内容",
+    "expected": "拒绝且不执行替换内容",
+    "owner_role": "固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C07",
+    "name": "取消先赢",
+    "trigger": "取消封禁写入后原命令迟到",
+    "expected": "不驱动；取消确定后退预留",
+    "owner_role": "固件＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C08",
+    "name": "开始先赢",
+    "trigger": "物理开始意图落盘后收到取消",
+    "expected": "取消拒绝，原任务继续受控处理",
+    "owner_role": "固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C09",
+    "name": "NOT_FOUND迟到",
+    "trigger": "查询未见后原命令延迟到达",
+    "expected": "不凭未见退预留；需取消封禁或原任务对账",
+    "owner_role": "固件＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C10",
+    "name": "无许可断网",
+    "trigger": "候选EPC保持中失联",
+    "expected": "不公开释放，保留任务和物体",
+    "owner_role": "固件＋机械",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C11",
+    "name": "许可后断网",
+    "trigger": "取得有效许可后失联",
+    "expected": "只安全完成原任务，落盘待同步，无新领",
+    "owner_role": "固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C12",
+    "name": "动作中掉电",
+    "trigger": "动作与结果落盘之间掉电",
+    "expected": "NEEDS_REVIEW；不重发、不猜成功",
+    "owner_role": "固件＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C13",
+    "name": "成功事件丢应答",
+    "trigger": "取走事件已应用但应答丢失",
+    "expected": "相同事件重传，借用与周期计数只一次",
+    "owner_role": "Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C14",
+    "name": "未取走",
+    "trigger": "可取后超过T_pickup",
+    "expected": "保留占用；人工核实未交付及卫生去向后处理",
+    "owner_role": "物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C15",
+    "name": "单EPC双条",
+    "trigger": "第二条无标签而跟随",
+    "expected": "不得以单EPC认正常单条；风险未关闭则不放行设计",
+    "owner_role": "机械＋质量",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C16",
+    "name": "串读冲突",
+    "trigger": "读到库存／邻柜／重复EPC",
+    "expected": "不放行本条；原始读数与实物进入核验",
+    "owner_role": "RFID＋机械",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C17",
+    "name": "卡仓假归还",
+    "trigger": "读到EPC但没有真正移交",
+    "expected": "不销账；保留实物和回执",
+    "owner_role": "机械＋固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C18",
+    "name": "代还",
+    "trigger": "非原借用人扫码归还",
+    "expected": "销原轮次；代还人不获原住户隐私",
+    "owner_role": "Liveo＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C19",
+    "name": "归还先到",
+    "trigger": "取走事件尚未上传先收到归还",
+    "expected": "待补原借出证据；冻结资产；补齐后结原轮次",
+    "owner_role": "Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C20",
+    "name": "旧归还晚到",
+    "trigger": "第二轮借出后收到第一轮旧归还",
+    "expected": "原结果去重或原轮次对账，不结束第二轮",
+    "owner_role": "Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C21",
+    "name": "重复回收",
+    "trigger": "同回执重复、同物体反复触发",
+    "expected": "不重复建借还结果或减占用",
+    "owner_role": "固件＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C22",
+    "name": "跨项目与伪事件",
+    "trigger": "错误项目标签／设备身份事件",
+    "expected": "拒绝越界记账；已接实物仍需隔离与回执",
+    "owner_role": "Liveo＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C23",
+    "name": "未知物体",
+    "trigger": "无标、多标、自带毛巾或仅标签",
+    "expected": "不冒充归还；保持或逐件隔离并分派责任",
+    "owner_role": "机械＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C24",
+    "name": "箱体／隔离位不可用",
+    "trigger": "缺箱、满箱、异常位满",
+    "expected": "禁止相关选路及新接收，换箱记录周转批次",
+    "owner_role": "物业＋固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C25",
+    "name": "新离线归还",
+    "trigger": "未建回执时断网",
+    "expected": "首期不开放新入口，指引物业人工交接",
+    "owner_role": "固件＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C26",
+    "name": "已接归还断网",
+    "trigger": "回执已建立并接管后失联",
+    "expected": "转移前保持／逐件隔离；不可逆转移已开始则存实际箱批次并冻结；均待同步不显示成功",
+    "owner_role": "固件",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C27",
+    "name": "洗好原账未结",
+    "trigger": "清洗QC通过但原借用待核验",
+    "expected": "禁止重装可发放库存，保留待入库差异",
+    "owner_role": "物业＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C28",
+    "name": "补货差异／换标",
+    "trigger": "漏装、多装、重号或旧EPC复现",
+    "expected": "清单不一致不恢复；换标留史且旧关联失效",
+    "owner_role": "物业＋RFID",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C29",
+    "name": "异常超期／争议",
+    "trigger": "T_ack/T_resolve到期仍未知",
+    "expected": "升级责任，不自动罚款或销账；关单需证据或政策处置",
+    "owner_role": "物业主管",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C30",
+    "name": "维护升级迁移",
+    "trigger": "旧指令及事件在重启／新项目到达",
+    "expected": "历史不清零；旧任务对账不污染新项目",
+    "owner_role": "固件＋Liveo",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C31",
+    "name": "周期切换／账号停用",
+    "trigger": "任务跨日或原账号停用",
+    "expected": "旧预留不清零；按原规则快照；仍有受控归还出口",
+    "owner_role": "Liveo＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  },
+  {
+    "id": "C32",
+    "name": "修复后恢复",
+    "trigger": "实物账务已处理但安全反馈仍异常",
+    "expected": "通道仍停用；所有恢复条件通过才接新任务",
+    "owner_role": "整机＋物业",
+    "execution_status": "未执行真机验收",
+    "evidence_required": [
+      "任务及事件版本",
+      "实物身份与位置",
+      "借用及额度结果",
+      "通道与异常责任结果"
+    ],
+    "planned_stage": "G2设计验证；G3按14章逐台或同版本继承；G4按15章现场复核"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "version": "V1.6",
+  "tool": "内置imagegen",
+  "reference": "图片/14_产品外观效果.png",
+  "prompts": [
+    {
+      "key": "exterior",
+      "prompt": "Use case: precise-object-edit. Edit the provided Liveo cabinet product render. Preserve the EXACT cabinet exterior, camera, brushed silver material, overall width/height/depth ratio, rounded side corners, Liveo logo upper left, QR code and round green LED upper right, clean pickup pocket upper left, return flap lower right within SAME cabinet, large flush service door and bottom rectangular service door with center lock, dark plinth and feet. Make ONLY ONE change: replace the rolled cylindrical towel in clean pickup pocket with ONE neatly FOLDED rectangular white towel, flat horizontal stacked folds, no roll, no extra towels. The towel must fit entirely in the pocket. Nothing else moves. No additional cabinet, screen, compartment or aperture. This is the single exterior reference for all subsequent scenes and structures. High quality landscape render, same framing as reference."
+    },
+    {
+      "key": "pool",
+      "prompt": "Use case: compositing. Input is the ONE AND ONLY Liveo towel cabinet exterior reference. Create ONE photorealistic condominium POOL scene. Copy the reference cabinet unchanged into a sheltered, dry poolside lobby with glazing behind, swimming pool and tropical planting visible outside. Cabinet should occupy about 55 percent of frame height, close enough to see front clearly. Camera same three-quarter front-left as reference. EXACT same broad silver cabinet shape and aspect ratio, rounded vertical corners, Liveo logo upper left, QR code and round green light upper right, clean pocket upper-left at about 29% height containing ONE flat folded white towel, return flap lower-right at about 55% height, lower front service door, centered service lock, dark plinth, little feet. ONE physical single cabinet only, absolutely NO separate return sidecar, no second tower, no added screen, no new holes, no new doors. No people obstruct the cabinet. Do not redesign it, do not make it tall and skinny. Suitable report presentation scene, landscape 1536x1024. No captions or floating text. Cabinet is an illustration of same single product, not an actual photo."
+    },
+    {
+      "key": "gym",
+      "prompt": "Use case: compositing. Input is the single authoritative Liveo cabinet exterior. Create a photorealistic condominium GYM ENTRANCE scene. Insert the EXACT unchanged reference cabinet in a dry gym entrance lobby, gym equipment visible behind glazing to the right. Maintain same three-quarter front-left viewing angle, silver broad single cabinet, same relative cabinet proportions and ALL front details: Liveo upper-left; QR and circular green LED upper-right; ONE clean towel pickup pocket upper-left with one rectangular FOLDED white towel; return flap lower-right IN SAME CABINET; same upper service door side lock and lower wide service hatch with center lock; same black plinth and feet. No secondary return cabinet, no narrow tall tower, no screen, no extra holes, no extra controls. A resident in gym clothes stands to the LEFT of cabinet, holding a phone and looking toward cabinet, NOT blocking any cabinet part and not touching it. Cabinet occupies most of height. Clearly recognizable as exact reference product placed in a realistic environment; do NOT reinterpret its industrial design. Landscape 1536x1024. No floating text or captions. This is a design scene render."
+    }
+  ]
+}

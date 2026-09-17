@@ -1,0 +1,15 @@
+﻿候选编号,BOM与分包,配件,供应商,型号或范围,1688链接,来源链接,证据层级,待确认与放行条件
+SP01,B05／P03,耐洗RFID标签,深圳市融智兴科技有限公司,柔性UHF布草洗涤标签，芯片／尺寸待选,https://szvipcard.1688.com/,https://www.szvipcard.com/news/company/1631.html,A-历史官网店链,仅证明洗涤标签品类和店铺入口；要水洗报告、湿态试样、EPC/TID与缝制规范
+SP02,B05／P03,RFID读写器,深圳市谷智远技术有限公司,GZY-E91／E94作为单／多通道询样候选,https://shop2j21996996867.1688.com/,https://infowise.tech/Products/index/id/25.html,A-官网店链,核UART/RS485实际电平、地区频段、SDK、功率步进、两读区调度；不能用标称读距认定湿态可靠
+SP03,B03／P01,M1／M2减速电机,东莞市佳力电机有限公司,直流齿轮减速电机＋编码器版本待核,https://gdmada.1688.com/,https://www.sumotor.com/zxwfdj.html,A-官网店链,按扭矩／速度／占空比／堵转电流索样；无已核编码器SKU，不提前冻结
+SP04,B03／P01,同步带轮／轻型送料平带,上海驾临传动设备有限公司（全称待营业执照复核）,HOYEAR轻型输送带、PU带及同步轮,https://hoyear.1688.com/,https://hjtexpo-storage.www.comocloud.net/cibrush_com/2025/12/15/20251215104739584e48f1.pdf,B-展会资料,送料平带与传动同步带分料号；核最小辊径、伸长、表面摩擦、接头及掉屑
+SP05,B03／P01,胶辊／包胶轮,绍兴福天机械有限公司,小直径胶辊按图报价,https://rollerft.1688.com/,https://www.rollerft.cn/contact/,A-官网店链,核小批量能力、直径跳动、胶层硬度、粘接与清洁耐受；不是已定毛巾分离机构
+SP06,B04／P01,保持／释放执行件,东莞市石碣德昂电子厂,DU1053推拉电磁铁仅作行程／力曲线比较候选,http://tangbenyang.1688.com/,https://cn.diytrade.com/china/pd/12687795/长行程推拉电磁铁.html,B-企业自述商品页,核24V版本、失电位置、保持力、占空比及温升；未按实际机构验证不得认定防夹
+SP07,B07／P04,光电及位置检测,深圳市天为机电设备有限公司（销售渠道）,对射型光电开关；参考Z3T系列询价,https://dayfor.1688.com/,https://www.gkong.com/products/pro_content.asp?products_id=1723311,B-供应商发布页,不是原品牌制造厂；核授权、PNP/NPN、湿毛巾与深浅色、失光故障及输入匹配
+SP08,B07／P04,24V主电源,江苏台源明纬电子科技有限公司（销售渠道）,明纬工业24V恒压系列，功率待负载预算,https://taiyuanmingwei.1688.com/,https://www.ty-meanwell.com/,A-渠道官网店链,品牌原厂为明纬；渠道授权待核。不要把店名当原厂；启动峰值、降额、保护及目标市场资料齐全
+SP09,B07／P04,线束／连接器,东莞伟昌电子科技有限公司,低压线束按T02针脚图定制,https://weichangdianzi.1688.com/,https://www.cn-connector.com/sys-nd/60.html,A-官网公开店链,核线径、端子压接、拉脱力、线号、防呆；其现有汽车线束介绍不等于已接受柜体定制
+SP10,B01／P05,钣金柜体／机架／护罩,青县拓达电子机箱有限公司,净污隔离柜、支架、维护门按图打样,https://tuodajx.1688.com/,https://www.china-metalform.com/m/zsshow853.html,B-展会展商页,材料／板厚／腐蚀环境／边缘处理／固定孔位待工程图冻结；整机装配责任单独指定
+SP11,B06／P02,回收容器,汕头市嘉乐亿塑胶制品有限公司,带盖可拆洗塑料箱，容量／尺寸待选,https://stjialeyi.1688.com/,https://www.ccfsh.net/show-1781-2332.html,B-展会展商页,核消毒剂相容性、防漏、箱体在位与满载检测安装；正常箱／异常单件容器分开定义
+SP12,B01／P05,压铆／紧固件,温州万胜紧固件有限公司,Z/NZ等压铆件及紧固件按图选,https://wzwansheng.1688.com/,https://www.wzwansheng.com/content4_98.htm,A-官网店链,螺纹、板厚适配、压铆抗扭、耐腐蚀材料及防松验证
+SP13,B03／P01,传送模块加工候选,东莞市华欣自动化传送设备有限公司,3060皮带机滚筒套件线索，非单条出巾整机,https://shop8g1699w883o94.1688.com/,https://hao1828.com/caigou/product/1005303795764,C-第三方商品索引,仅作加工厂线索；不能认为普通输送机已能分离单条毛巾；主体／店铺／定制能力均待核
+SP14,B07／NET-C,外置4G路由器线索,有人USR品牌；1688实际卖方待核,USR-G805C现有商品线索，非批准型号,https://detail.1688.com/offer/695120026102.html,https://www.1688wholesale.com/zh-CHS/1688/china_alibaba_item/695120026102.html,C-第三方商品索引,页面标题为免插卡版本，不能认定支持自选SIM／新加坡网络；未获正式型号和频段资料前不下单

@@ -1,0 +1,119 @@
+[
+  {
+    "number": 147,
+    "file": "147_21_闭环要同时核对什么.svg",
+    "title": "闭环要同时核对什么",
+    "chapter": "21",
+    "section": 1,
+    "caption": "文档闭环是规则齐全；实机闭环还需按同一用例验证。",
+    "group": "section"
+  },
+  {
+    "number": 148,
+    "file": "148_21_从合格净巾到下一轮发放.svg",
+    "title": "从合格净巾到下一轮发放",
+    "chapter": "21",
+    "section": 2,
+    "caption": "任何一步未知都进有责任人的异常单；不能跳过账务核验直接回净巾库存。",
+    "group": "section"
+  },
+  {
+    "number": 149,
+    "file": "149_21_四组不可破坏的约束.svg",
+    "title": "四组不可破坏的约束",
+    "chapter": "21",
+    "section": 3,
+    "caption": "具体约束I01—I12是跨章节统一的审查基线。",
+    "group": "section"
+  },
+  {
+    "number": 150,
+    "file": "150_21_取消与迟到命令的互斥.svg",
+    "title": "取消与迟到命令的互斥",
+    "chapter": "21",
+    "section": 4,
+    "caption": "取消与开始只有一个先赢；查询NOT_FOUND和应答超时都不证明取消成功。",
+    "group": "section"
+  },
+  {
+    "number": 151,
+    "file": "151_21_归还先到与旧事件晚到.svg",
+    "title": "归还先到与旧事件晚到",
+    "chapter": "21",
+    "section": 5,
+    "caption": "投放人不等于原借用人；禁止按事件到达时“最新一笔借用”随意销账。",
+    "group": "section"
+  },
+  {
+    "number": 152,
+    "file": "152_21_洗好之后能否回到可发放库存.svg",
+    "title": "洗好之后能否回到可发放库存",
+    "chapter": "21",
+    "section": 6,
+    "caption": "毛巾位置、卫生状态、借用状态是三个维度，不可用一个状态互相代替。",
+    "group": "section"
+  },
+  {
+    "number": 153,
+    "file": "153_21_额度三种量不能混为一谈.svg",
+    "title": "额度三种量不能混为一谈",
+    "chapter": "21",
+    "section": 7,
+    "caption": "按账号或Unit共享、周期和上限由D08签核；不擅自启用收费。",
+    "group": "section"
+  },
+  {
+    "number": 154,
+    "file": "154_21_断网时只推进已有确定任务.svg",
+    "title": "断网时只推进已有确定任务",
+    "chapter": "21",
+    "section": 8,
+    "caption": "首期依赖在线创建回执；如无法持久化证据，停止接收新物体。",
+    "group": "section"
+  },
+  {
+    "number": 155,
+    "file": "155_21_待核验如何真正关闭.svg",
+    "title": "待核验如何真正关闭",
+    "chapter": "21",
+    "section": 9,
+    "caption": "超时只触发升级；证据不足不能自动罚款、销账或放开通道。",
+    "group": "section"
+  },
+  {
+    "number": 156,
+    "file": "156_21_维护迁移与恢复的闭环.svg",
+    "title": "维护迁移与恢复的闭环",
+    "chapter": "21",
+    "section": 10,
+    "caption": "旧项目事件只入原任务审计与受控对账，不能当成新项目操作。",
+    "group": "section"
+  },
+  {
+    "number": 157,
+    "file": "157_21_研发到量产的资料回路.svg",
+    "title": "研发到量产的资料回路",
+    "chapter": "21",
+    "section": 11,
+    "caption": "每次整改必须回写源文件与影响范围；文档签收不替代实物验收。",
+    "group": "section"
+  },
+  {
+    "number": 158,
+    "file": "158_21_闭环验收必须覆盖三类路径.svg",
+    "title": "闭环验收必须覆盖三类路径",
+    "chapter": "21",
+    "section": 12,
+    "caption": "C01—C32逐案记录四类结果：实物、任务、账务、通道；不能只检查App提示。",
+    "group": "section"
+  },
+  {
+    "number": 159,
+    "file": "159_21_本轮修订关闭与未关闭边界.svg",
+    "title": "本轮修订关闭与未关闭边界",
+    "chapter": "21",
+    "section": 13,
+    "caption": "“逻辑有出口”不等于现实必能完成；缺关键能力时选择拒绝或停用，不伪造成功。",
+    "group": "section"
+  }
+]

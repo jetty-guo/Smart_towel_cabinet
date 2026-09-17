@@ -1,0 +1,98 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>T02｜模块接口冻结</title><link rel="stylesheet" href="../../assets/site.css"><link rel="icon" href="data:,"></head><body><div class="site-nav" aria-label="资料导航"><a href="../../index.html">资料总首页</a><a href="../../docs/index.html">从0到1文档总包</a><a href="../../docs/图册总览.html">统一产品图册</a><a href="../../patent/index.html">专利技术交底书</a></div><main><article><h1 id="t02模块接口冻结">T02｜模块接口冻结</h1>
+<p><strong>V1.6一致性必填：</strong> 产品LVT-ONE；布局源版本____；总装图版本____；外观/开口/分舱/检修门比对____；偏差及T11编号____；复验人和日期____。未完成比对不能标整机一致性通过。</p>
+<p>适用：G2／整机集成统筹。</p>
+<p><strong>空白表示未填写，不代表0、不适用或已通过。每次/每台/每批复制本表形成独立记录，保留原始证据。</strong></p>
+<!-- form-figure -->
+<h2 id="填表参考图">填表参考图</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/13_%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E5%86%BB%E7%BB%93.svg" alt="13_模块接口冻结"></p>
+<p><em>对照模块两端逐项填写机械、电气、物料和协议接口；图本身不表示接口已签核。</em></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>填写要求</th>
+<th>实际记录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接口两端</td>
+<td>上游模块及版本；下游模块及版本；双方工程负责人</td>
+<td></td>
+</tr>
+<tr>
+<td>机械接口</td>
+<td>安装基准、孔位、外形、公差、质量、重心、过渡间隙与图号</td>
+<td></td>
+</tr>
+<tr>
+<td>物料接口</td>
+<td>毛巾姿态、规格范围、标签位置、允许残余潮气、异常物体处理</td>
+<td></td>
+</tr>
+<tr>
+<td>电气接口</td>
+<td>供电、峰值、信号电平、针脚、接地、连接器、失电行为</td>
+<td></td>
+</tr>
+<tr>
+<td>控制接口</td>
+<td>启动许可、停止、反馈、超时、故障、复位及状态版本</td>
+<td></td>
+</tr>
+<tr>
+<td>维护接口</td>
+<td>拆换步骤、清洁方法、工具、空间、易损件和安全隔离</td>
+<td></td>
+</tr>
+<tr>
+<td>冻结</td>
+<td>联调证据路径、偏差、双方批准、冻结日期、变更编号</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="提交前检查">提交前检查</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 命令与真实反馈分开</li>
+<li><input disabled="" type="checkbox"> 上游异常不会强迫下游放行</li>
+<li><input disabled="" type="checkbox"> 装配图与I/O和协议一致</li>
+</ul>
+<p>记录文件命名：表号_项目或样机_日期_批次。所有测量填写单位与方法；不适用项写明原因、替代处理及批准人。</p>
+<p><strong>V1.3补充核对：</strong> 接口签核补充：ReleasePermit、取消封禁、三类版本、RECEIVED/APPLIED、归还回执与原借用轮次、升级迁移；均按09/21章冻结。</p>
+<h3 id="v14-接口补齐">V1.4 接口补齐</h3>
+<p>逐项记录ReleasePermit身份与续期封禁、ReturnRoutePermit箱周转批次／容量预留、RECEIVED后QueryTaskResult、T_settle、同eventId载荷冲突、测试到生产凭据／历史移交；每项填写双方负责人、协议版本、验证记录和未决项。未定项不得填“已冻结”。</p>
+<h3 id="v15联网mqtt冻结补充">V1.5联网／MQTT冻结补充</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>需填内容</th>
+<th>实际冻结记录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>硬件</td>
+<td>MC型号、板卡版本、NET-W/E/C/D、I/O分配、驱动与存储</td>
+<td></td>
+</tr>
+<tr>
+<td>蜂窝</td>
+<td>SIM座／型号、模组频段、天线、APN、运营商、是否现场验证</td>
+<td></td>
+</tr>
+<tr>
+<td>MQTT</td>
+<td>Broker、端口、3.1.1、TLS、clientId、Topic/ACL、证书轮换</td>
+<td></td>
+</tr>
+<tr>
+<td>边界值</td>
+<td>心跳、退避、时钟偏差、持久队列容量、保留期限和满载策略</td>
+<td></td>
+</tr>
+<tr>
+<td>验收</td>
+<td>NET01—NET08适用性、判据、责任人和日志位置</td>
+<td></td>
+</tr>
+</tbody></table></div>
+</article></main></body></html>

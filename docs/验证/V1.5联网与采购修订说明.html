@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V1.5｜联网与采购修订说明</title><link rel="stylesheet" href="../../assets/site.css"><link rel="icon" href="data:,"></head><body><div class="site-nav" aria-label="资料导航"><a href="../../index.html">资料总首页</a><a href="../../docs/index.html">从0到1文档总包</a><a href="../../docs/图册总览.html">统一产品图册</a><a href="../../patent/index.html">专利技术交底书</a></div><main><article><h1 id="v15联网与采购修订说明">V1.5｜联网与采购修订说明</h1>
+<p>日期：2026-09-16。范围：05／09／10／11／12／14／15／18／20章、T02／T03／T04／T06／T13，以及README、阅读索引、图册与采购附件。03、04、06、07、08、13、16、17、19、21等未改动正文；V1.4全文审查仍是历史基线。</p>
+<h2 id="本次改动">本次改动</h2>
+<ul>
+<li>明确Wi-Fi／有线／SIM版与双链路选配，区分主控板、蜂窝模组、路由器和MQTT客户端。</li>
+<li>4款板卡、3家厂家：微雪2款、乐鑫1款、合宙1款；官方资料仅用于能力核对，未宣称整柜成熟产品。</li>
+<li>MQTT 3.1.1 over TLS成为设备接入必选，补双向QoS 1、证书、Topic与ACL、耐久队列、防重、防旧命令、业务确认及8个网络故障场景。</li>
+<li>14条分配件采购线索有具体1688地址及出处；原厂／销售渠道与来源A/B/C分开标注；专用品类的未核型号、报价、供方缺口保留。</li>
+<li>3张新图插在05章第1节、09章第1节、10章第2节，共162张。图为设计示意，非实物或试验结果。</li>
+</ul>
+<h2 id="闭环复核">闭环复核</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>环节</th>
+<th>本次核对结果</th>
+<th>待真实验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>App→平台→柜端</td>
+<td>App不直接发布电机MQTT，设备身份和项目授权仍由平台约束</td>
+<td>Liveo实际接入点、Broker、适配实现</td>
+</tr>
+<tr>
+<td>Wi-Fi／4G切换</td>
+<td>保持同clientId和原任务，协议去重独立于网络</td>
+<td>每种交付配置实测</td>
+</tr>
+<tr>
+<td>动作→回执→账务</td>
+<td>PUBACK、RECEIVED与APPLIED区分；补传保留eventId</td>
+<td>断电存储、Broker重启、乱序故障注入</td>
+</tr>
+<tr>
+<td>离线与恢复</td>
+<td>不新增离线领还；已有任务遵循21章原许可和安全规则</td>
+<td>队列满、存储损坏、弱网、超时恢复</td>
+</tr>
+<tr>
+<td>采购→装配→验收</td>
+<td>供方分别报价；T02接口冻结、T03核主体、T04核成本、FAT/SAT留证</td>
+<td>报价、样品、资质、正式订单</td>
+</tr>
+</tbody></table></div>
+<h2 id="未完成的采购及工程事实">未完成的采购及工程事实</h2>
+<p>本轮未发送询价、下单或登录供应商账户。部分1688页面无法读取，官网／展会公开店铺地址不能证明当前在售、主体认证或履约。MC板卡对应1688官方SKU、电机驱动、DC/DC、I/O扩展、分离垫、毛巾及清洗供方等仍见10章缺口表。14条候选没有任何一条被标为已采购或实机通过。</p>
+<p>原C01—C44及新增NET01—NET08真实验收均未执行。既有规则模型结果不代表新增网络栈实现、工厂或现场验收。未修改Liveo业务代码、数据库、部署和历史Word。</p>
+<h2 id="文件验收">文件验收</h2>
+<p>本次生成的静态引用／索引／图片检查和ZIP一致性结果见<a href="../文件校验记录.json">文件校验</a>。旧248个锚点应保留；正文01—21、表单T01—T14顺序不变。浏览器交互未验收；新增SVG使用离线渲染检查。</p>
+</article></main></body></html>

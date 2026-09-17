@@ -1,0 +1,20 @@
+{
+  "version": "V1.1",
+  "tool": "内置 image_gen（未使用CLI）",
+  "purpose": "产品外观、内部模块爆炸与住户场景概念图",
+  "prompts": [
+    {
+      "key": "hero",
+      "prompt": "Use case: product-mockup. Create a premium but cost-conscious industrial design product visualization for a smart towel cabinet integrated with Liveo App for a condominium pool/gym. Landscape 1536x1024. ONE coherent cabinet, closed front, matte light gray powder coated steel, dark graphite base, rounded SAFE edges, small recessed clean towel pickup pocket upper-mid left, ONE folded white towel partly visible sitting inside pocket, separate clearly distinct lower-mid right dirty towel return aperture with simple flap, maintenance doors closed flush with service lock. NO stock cubby grid, no big touchscreen, no robotics, no UV, no open inventory door. Small square generic QR area and a modest status light. Studio three-quarter front view on light gray seamless background. Minimal only exact brand text 'Liveo' near top, and small labels 'CLEAN TOWEL', 'RETURN'. Product is conceptual rendering not real prototype. Clean physically plausible surfaces, convincing sheet metal construction, soft natural highlights. No people no dimensions no technical internal cutaway. High quality photorealistic render for engineering proposal."
+    },
+    {
+      "key": "exploded",
+      "prompt": "Use case: scientific-educational / product-mockup. Create a precise-looking but explicitly conceptual exploded isometric illustration of the INTERNAL MODULES of a cost-conscious smart towel cabinet, light gray outer chassis and service panel separated slightly, on white background, landscape 1536x1024. Show one machine overall assembled coordinate arrangement with separated modules in assembly order, NO fictional robot arms or random cells. upper clean towel stack hopper in removable cassette with folded white rectangular towels, just beneath hopper a SHORT horizontal feed flat belt module M1, adjacent downstream independent longer takeaway flat belt M2 and an enclosed hold/read chamber, then release flap and a recessed pickup pocket. lower/right independent dirty towel intake chamber with small transfer flap above a removable collection bin; adjacent SMALL isolated review container. rear protected vertical electrical panel separated from all towels. Use subtle teal accents for clean path and muted amber for dirty area, stainless shafts and black plain conveyor belts. Small numbered circular callouts 1 through 7 only, no other text, no invented dimensions, no RF radiation rays. Dashed mechanical placement guides, spatial separation, shafts correctly oriented, distinct clean/dirty areas. This is conceptual module decomposition NOT manufacturing CAD; illustrate module relationships honestly, do not depict physical feed path crossing dirty bin."
+    },
+    {
+      "key": "install",
+      "prompt": "Use case: photorealistic-natural product visualization. Landscape 1536x1024. High end Singapore condominium indoor gym foyer near covered pool corridor, clean neutral architecture, no external supplier branding. Cost-conscious smart towel cabinet brand 'Liveo', one closed light-gray steel cabinet with graphite base, small clean towel pickup pocket containing a single folded white towel at comfortable waist height, separate dirty towel return flap lower-right, small generic square QR placard and status light, NO big touchscreen and NO exposed inventory. ONE adult resident in sportswear standing beside cabinet, holding smartphone to scan QR and reaching toward towel pocket. Phone screen no readable fine text. Wide enough to show unobstructed circulation and dry floor, electrical cable concealed, cabinet stands flush against wall but physically plausible. No dangerous poolside exposed wiring, no cabinet directly in splash zone. Photoreal architectural product CONCEPT rendering, warm daylight, editorial not ad. Top left small exact text '场景效果示意'. Not real installed project photograph."
+    }
+  ],
+  "note": "概念效果非实物照片；矢量技术图由本地SVG绘图脚本生成。"
+}

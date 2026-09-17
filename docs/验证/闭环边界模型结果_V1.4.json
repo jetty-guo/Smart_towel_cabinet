@@ -1,0 +1,71 @@
+{
+  "version": "V1.4",
+  "checks": 14,
+  "passed": 14,
+  "failed": 0,
+  "real_hardware_cases_executed": 0,
+  "limitations": [
+    "纯内存顺序模型",
+    "不验证掉电持久化或真实并发",
+    "许可真实性、传感器与授权为输入假设",
+    "不覆盖全部C01-C44"
+  ],
+  "results": [
+    {
+      "name": "收到不等于应用",
+      "status": "PASS"
+    },
+    {
+      "name": "丢最终通知后可查",
+      "status": "PASS"
+    },
+    {
+      "name": "超结算期限保留占用并建单",
+      "status": "PASS"
+    },
+    {
+      "name": "同ID异内容不覆盖",
+      "status": "PASS"
+    },
+    {
+      "name": "重复应用只一次",
+      "status": "PASS"
+    },
+    {
+      "name": "最后容量两种竞争顺序",
+      "status": "PASS"
+    },
+    {
+      "name": "换箱使旧路线失效",
+      "status": "PASS"
+    },
+    {
+      "name": "转移中禁止换箱且离线保留真实位置",
+      "status": "PASS"
+    },
+    {
+      "name": "转移前断网不进入正常箱",
+      "status": "PASS"
+    },
+    {
+      "name": "重复许可与释放不增加动作",
+      "status": "PASS"
+    },
+    {
+      "name": "续期需撤销且旧版本拒绝",
+      "status": "PASS"
+    },
+    {
+      "name": "已释放不能假定未开始撤销",
+      "status": "PASS"
+    },
+    {
+      "name": "签收转保管不解除业务冻结",
+      "status": "PASS"
+    },
+    {
+      "name": "超期不自动关单且政策处置需子单接收",
+      "status": "PASS"
+    }
+  ]
+}

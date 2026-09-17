@@ -1,0 +1,29 @@
+[
+  {
+    "number": 160,
+    "file": "160_05_主控联网配置与本地控制.svg",
+    "title": "主控联网配置与本地控制",
+    "chapter": "05",
+    "section": 1,
+    "caption": "Wi-Fi／网口／蜂窝是网络入口；MQTT/TLS要求一致，控制与安全留在柜端。",
+    "group": "section"
+  },
+  {
+    "number": 161,
+    "file": "161_09_MQTT消息与业务确认.svg",
+    "title": "MQTT消息与业务确认",
+    "chapter": "09",
+    "section": 1,
+    "caption": "跨Broker的长箭头为逻辑消息，实际均由Broker路由；PUBACK不等于RECEIVED或APPLIED。",
+    "group": "section"
+  },
+  {
+    "number": 162,
+    "file": "162_10_分配件供应与整机责任.svg",
+    "title": "分配件供应与整机责任",
+    "chapter": "10",
+    "section": 2,
+    "caption": "分配件寻找专业供方，整机集成与FAT/SAT责任不拆散。",
+    "group": "section"
+  }
+]

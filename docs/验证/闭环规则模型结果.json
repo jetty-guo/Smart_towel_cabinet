@@ -1,0 +1,240 @@
+{
+  "model_version": "V1.3",
+  "purpose": "文档规则反例检查，不是已实现系统或真机验收",
+  "checks_passed": 28,
+  "checks": [
+    {
+      "name": "同资产两轮完整循环",
+      "related_cases": [
+        "C01"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "未授权无孤立预留",
+      "related_cases": [
+        "C02"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "同额度主体第二请求被拒绝",
+      "related_cases": [
+        "C03"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "同通道单执行所有者",
+      "related_cases": [
+        "C04"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "重启保留日志后重复指令不再驱动",
+      "related_cases": [
+        "C05"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "同ID不同内容无副作用拒绝",
+      "related_cases": [
+        "C06"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "取消先完成拦截迟到指令",
+      "related_cases": [
+        "C07"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "开始先完成不能取消退预留",
+      "related_cases": [
+        "C08"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "查询未见不是取消证明",
+      "related_cases": [
+        "C09"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "无许可离线禁止公开释放",
+      "related_cases": [
+        "C10"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "已有有效许可只完成原任务",
+      "related_cases": [
+        "C11"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "许可超期保持原物体",
+      "related_cases": [
+        "C10"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "掉电结果未知不重新驱动",
+      "related_cases": [
+        "C12"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "重复成功事件只记一次",
+      "related_cases": [
+        "C13"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "已接收事件不等于业务已应用",
+      "related_cases": [
+        "C13"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "未取走不自动取消或解锁",
+      "related_cases": [
+        "C14"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "只读身份未移交不得销账",
+      "related_cases": [
+        "C17"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "归还先到等原借出证据",
+      "related_cases": [
+        "C19"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "旧归还不结束新轮借用",
+      "related_cases": [
+        "C20",
+        "C21"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "未知身份不自动销账",
+      "related_cases": [
+        "C23"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "无可用接收位置禁止转移",
+      "related_cases": [
+        "C24"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "不接受新离线归还",
+      "related_cases": [
+        "C25"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "已接管归还断网隔离待同步",
+      "related_cases": [
+        "C26"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "洗净原账未结禁止重新装载",
+      "related_cases": [
+        "C27"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "装载不符或身份失效不放行",
+      "related_cases": [
+        "C28"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "旧项目与旧通道版本禁止动作",
+      "related_cases": [
+        "C30"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "归还不返还周期使用次数",
+      "related_cases": [
+        "C31"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    },
+    {
+      "name": "业务完成但安全未恢复仍锁通道",
+      "related_cases": [
+        "C32"
+      ],
+      "result": "规则模型通过",
+      "real_device_result": "未执行"
+    }
+  ],
+  "real_device_cases_total": 32,
+  "real_device_cases_executed": 0,
+  "limitations": [
+    "执行原子性、磁盘耐久、真实并发、网络协议均只是假设，需实现与实机验证",
+    "不模拟布料摩擦、条数、RFID湿读、夹困及传感器可靠性",
+    "不覆盖全部运营权限、SLA调度、审批、清洗与人员交接",
+    "不验证Liveo源码、数据库、部署或真实项目权限"
+  ]
+}

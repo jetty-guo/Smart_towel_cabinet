@@ -1,0 +1,247 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>05｜电气控制与安全设计</title><link rel="stylesheet" href="../assets/site.css"><link rel="icon" href="data:,"></head><body><div class="site-nav" aria-label="资料导航"><a href="../index.html">资料总首页</a><a href="../docs/index.html">从0到1文档总包</a><a href="../docs/图册总览.html">统一产品图册</a><a href="../patent/index.html">专利技术交底书</a></div><main><article><h1 id="05电气控制与安全设计">05｜电气控制与安全设计</h1>
+<p><strong>单一产品基线 V1.6：</strong> 本章采用同一台柜：左上领巾、右下归还、上右独立电气舱、下部两只独立回收抽箱；净巾沿柜深从后向前送料。所有整体视图由<a href="统一设计源/单一产品布局.json">统一布局源</a>和<a href="统一设计源/单一产品说明.html">图形一致性说明</a>约束。</p>
+<p>状态：电气需求与I/O功能定义；不是可直接接线的原理图。整机设计单位应按目标市场和风险评估确定保护等级及适用标准。</p>
+<h2 id="1-电源与控制分层">1. 电源与控制分层</h2>
+<p>市电入口 → 隔离／过流等配套保护 → 合规电源 → 按执行件、RFID、控制器分支供电。</p>
+<p>24V直流仅为执行件询价候选；电机、门执行件、驱动器、传感器电平与电源必须成套核对。控制器GPIO不能直接带电机或电磁执行件。</p>
+<p>本地运动与安全逻辑处理门位、异常停车和恢复；联网任务层处理授权、业务状态和补传。普通应用软件或普通限位开关不自动构成经过验证的安全系统。</p>
+<!-- figure-22 -->
+<h3 id="图22电源与控制连接框图">图22｜电源与控制连接框图</h3>
+<p><img src="%E5%9B%BE%E7%89%87/22_%E7%94%B5%E6%BA%90%E6%8E%A7%E5%88%B6%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A1%86%E5%9B%BE.svg" alt="电源与控制连接框图"></p>
+<p><em>供电分支、熔断/过流、线径、电平、针脚与安全回路由电气图定义。24V仅为原文询价候选；普通I/O不自动构成安全功能。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<p>平台释放许可属于业务准入，本地保护属于动作准入，两者必须同时成立。断网不新增领还；已有净巾任务未有许可只能保持，已有回收任务保存位置和证据；存储不可写停止新接收。平台不能通过强制状态覆盖本地安全反馈。</p>
+<h3 id="主控板候选wifi-和-sim-必须分开看v15">主控板候选：Wi‑Fi 和 SIM 必须分开看（V1.5）</h3>
+<p><strong>推荐打样顺序：先用微雪 ESP32-S3-ETH-8DI-8RO 做电控台架；用乐鑫 ESP32-S3-DevKitC-1 做低成本定制板的开发参考；现场没有可用网络时，再验证带 SIM 的版本。这里是候选路线，不是已批准采购清单。</strong> Wi‑Fi 是联网方式；SIM 卡需要配合蜂窝通信模组和天线；MQTT 是联网后与平台交换消息的协议，三者不是同一级概念。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>编号／厂家与型号</th>
+<th>Wi‑Fi／网口</th>
+<th>SIM／4G</th>
+<th>MQTT能力与缺口</th>
+<th>适用阶段与采购边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MC01 微雪 Waveshare：ESP32-S3-ETH-8DI-8RO</td>
+<td>板载2.4GHz Wi‑Fi、以太网</td>
+<td>本板没有蜂窝模组；需另配4G路由器，通过网口接入</td>
+<td>厂家有MQTT示例；须改为满足本项目TLS、QoS 1、耐久记录和业务确认的固件</td>
+<td>电控台架优先候选；8DI、8继电器、隔离RS485，7—36V输入；点数和编码器接口须另算，不能当作整柜即插即用控制器</td>
+</tr>
+<tr>
+<td>MC02 微雪：ESP32-S3-SIM7670G-4G-EN</td>
+<td>板载2.4GHz Wi‑Fi；不视为自带有线网口</td>
+<td>板载SIM7670G LTE Cat.1，使用SIM与配套天线</td>
+<td>有蜂窝通信／MQTT开发资料；TLS认证和项目固件仍须开发验证</td>
+<td>Wi‑Fi＋4G通信台架候选；不自带整柜工业隔离I/O及电机驱动；相机、太阳能等外围不属于柜体必需配置</td>
+</tr>
+<tr>
+<td>MC03 乐鑫 Espressif：ESP32-S3-DevKitC-1</td>
+<td>板载Wi‑Fi；网口需扩展</td>
+<td>无板载蜂窝通信及SIM接口</td>
+<td>使用ESP-IDF＋ESP-MQTT开发MQTT/TLS、QoS 1；买板不等于买到本项目固件</td>
+<td>低成本自研控制板的开发参考；量产要增加隔离、驱动、保护、连接器及存储设计，并计开发和验证费用</td>
+</tr>
+<tr>
+<td>MC04 上海合宙：Air780EPM核心板／开发板</td>
+<td>不把WiFi Scan当成Wi‑Fi联网；Wi‑Fi联网需外部适配</td>
+<td>4G Cat.1路线；订货必须明确核心板版本、SIM座、电平和天线</td>
+<td>LuatOS有MQTT及单／双向证书例程；逻辑仍需开发</td>
+<td>国内台架备选；新加坡现场频段、运营商、证书未核定，暂不能作为海外量产定版</td>
+</tr>
+</tbody></table></div>
+<p>官方依据（核对日期2026-09-16）：<a href="https://www.waveshare.com/wiki/ESP32-S3-ETH-8DI-8RO">MC01规格与例程</a>、<a href="https://docs.waveshare.net/ESP32-S3-ETH-8DI-8RO/Arduino/">MC01中文例程</a>、<a href="https://www.waveshare.com/product/esp32-s3-sim7670g-4g.htm">MC02产品页</a>、<a href="https://docs.waveshare.net/ESP32-S3-SIM7670G-4G/">MC02开发资料</a>、<a href="https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/">MC03官方开发板说明</a>、<a href="https://docs.openluat.com/air780epm/product/">MC04官方资料</a>、<a href="https://docs.openluat.com/air780epm/luatos/app/socket/mqtt/">MC04 MQTT证书例程</a>。官网入口用于核规格与索样；本轮未取得上述四款的可核实1688官方商品页，不以其他型号代替。价格、库存、交期均未报价。</p>
+<p><strong>为什么不能直接照抄示例：</strong> 微雪Arduino例程列出的PubSubClient 2.8仅支持QoS 0发布，不能满足本项目关键事件QoS 1上报要求。ESP32方案建议改用ESP-MQTT，并自己实现耐久事件队列。库的内存outbox不等于断电保存；微雪演示云已停止维护，也不能作为Liveo正式依赖。依据：<a href="https://github.com/knolleary/pubsubclient">PubSubClient维护方说明</a>、<a href="https://docs.espressif.com/projects/esp-mqtt/en/latest/esp32/">ESP-MQTT官方说明</a>。</p>
+<h3 id="联网配置与成本边界">联网配置与成本边界</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>必需硬件</th>
+<th>SIM插在哪里</th>
+<th>使用前提／成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NET-W 基础Wi‑Fi版</td>
+<td>MC01或MC03路线、合适天线、工业I/O与驱动</td>
+<td>不配SIM</td>
+<td>有稳定的设备专用2.4GHz网络；不采用需要住户网页反复登录的访客Wi‑Fi。Wi‑Fi本身不产生SIM月租</td>
+</tr>
+<tr>
+<td>NET-E 有线版</td>
+<td>带以太网主板＋现场网口、线缆</td>
+<td>不配SIM</td>
+<td>现场已布线且费用合理时优先；布线施工单列报价</td>
+</tr>
+<tr>
+<td>NET-C 蜂窝版</td>
+<td>MC02路线，或NET-E主板＋外置4G路由器</td>
+<td>MC02板载卡座，或外置路由器卡座</td>
+<td>无可用现场网络；需SIM、流量、APN、天线及运营商实测。两种结构择一报价，避免重复购买</td>
+</tr>
+<tr>
+<td>NET-D 双链路版（选配）</td>
+<td>已验证的Wi‑Fi／网口＋4G组合</td>
+<td>同NET-C</td>
+<td>仅在停机成本能覆盖硬件、流量及维护增量时采用；切换期间只保留同一设备执行身份，不同时启动两套任务</td>
+</tr>
+</tbody></table></div>
+<p>首期成本建议为NET-W／NET-E；4G作为现场条件需要的选配，<strong>不是默认每台都加SIM</strong>。NET-D自动切换策略必须通过09章网络子用例才能交付。金属柜应验证外置天线位置、密封引出、馈线损耗和湿区隔离；不得把“全球频段”或“全网通”当成新加坡现场已可用的证明。</p>
+<p>MQTT客户端在主控固件运行；外置4G路由器只提供IP网络，<strong>不要求路由器代替主控维护领还业务状态</strong>。RS485／UART／GPIO是柜内接口，不替代柜端到Liveo的MQTT。Liveo App仍通过平台接口操作，不能持有柜端证书直接发电机指令。</p>
+<p><img src="%E5%9B%BE%E7%89%87/160_05_%E4%B8%BB%E6%8E%A7%E8%81%94%E7%BD%91%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A7%E5%88%B6.svg" alt="联网配置与本地控制边界"></p>
+<p><em>图160：Wi‑Fi、有线、蜂窝是可选网络入口；MQTT/TLS及本地安全要求在每种配置下相同。</em></p>
+<p><strong>主板选型放行条件：</strong> 先把本章S0—L1及所有执行反馈逐点落到T02/T06，列出普通DI、编码器高速输入、模拟电流采样、PWM／方向／使能和总线需求，再决定扩展板。MC01的8个DI不能据此认定足够；继电器不用于高频PWM，也不能不经额定值核算直接承担电机正反转。安全停机回路独立于MQTT、Wi‑Fi、4G和上位平台。样机先核整套电控成本，不能只比裸板价格。</p>
+<h2 id="2-io定义">2. I/O定义</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用途</th>
+<th>不足与失效处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S0维护门</td>
+<td>维护入口状态</td>
+<td>失效不得让自动动作获得许可；是否采用监测回路由风险评估确定</td>
+</tr>
+<tr>
+<td>S1分离出口</td>
+<td>前／尾缘通过检测</td>
+<td>卡常亮常灭、绒毛遮挡进入故障；不是条数真值</td>
+</tr>
+<tr>
+<td>S2释放通道</td>
+<td>物体经过出口</td>
+<td>必须与释放指令及S3有序关联</td>
+</tr>
+<tr>
+<td>S3取物斗</td>
+<td>有物及取走检测</td>
+<td>故障不能直接置为已取走；手或光照误触要验证</td>
+</tr>
+<tr>
+<td>G1/G2反馈</td>
+<td>释放件开／关到位</td>
+<td>命令与反馈分开；矛盾或超时停发</td>
+</tr>
+<tr>
+<td>E1/E2</td>
+<td>编码器或运动反馈（按方案）</td>
+<td>轴动不代表布动，作为异常诊断辅助</td>
+</tr>
+<tr>
+<td>I1/I2</td>
+<td>电机电流采集（按方案）</td>
+<td>需测基线及限值，不能直接计条数</td>
+</tr>
+<tr>
+<td>R0/R1</td>
+<td>回收入口与转移件状态</td>
+<td>防止入口与下游形成可回掏通路</td>
+</tr>
+<tr>
+<td>R2/R3</td>
+<td>回收转移与接收检测</td>
+<td>排除卡在门上却销账</td>
+</tr>
+<tr>
+<td>B1/B2</td>
+<td>正常／异常容器在位和满载</td>
+<td>缺箱或满箱禁止相关路由</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>可能积液位置监测（按环境）</td>
+<td>报警并隔离受影响模块，不能只静音继续运行</td>
+</tr>
+</tbody></table></div>
+<p>针脚、电平、上拉、常态、断线行为、线号和连接器不能由本表推断；交付时填写<a href="执行表单/T06_IO与接线核验.html">接线与I/O表</a>。</p>
+<!-- module-figure-66 -->
+<p><strong>子模块图｜I_O逐点位置与作用</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/066_05_I_O%E9%80%90%E7%82%B9%E4%BD%8D%E7%BD%AE%E4%B8%8E%E4%BD%9C%E7%94%A8.svg" alt="I_O逐点位置与作用"></p>
+<p><em>引用同一产品布局；模块位置与图02、图17一致。</em></p>
+<h2 id="3-每种失效的预期行为">3. 每种失效的预期行为</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>必须达到的系统行为</th>
+<th>恢复条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>市电消失</td>
+<td>危险运动进入设计的安全状态；库存不能意外对外释放</td>
+<td>本地重启核对门位、物体和未完成任务</td>
+</tr>
+<tr>
+<td>CPU死机／看门狗</td>
+<td>驱动许可失效；不自动重复上一动作</td>
+<td>自检和任务核对通过</td>
+</tr>
+<tr>
+<td>网络失联</td>
+<td>不接新领还；已有任务依许可及本地安全边界收尾</td>
+<td>事件补传、平台对账完成</td>
+</tr>
+<tr>
+<td>维护门打开</td>
+<td>禁止自动危险动作；保留业务证据</td>
+<td>维护结束、门位正常、授权复位</td>
+</tr>
+<tr>
+<td>电机堵转／驱动异常</td>
+<td>停相关动作，锁定通道</td>
+<td>排障并核对实物，不盲目反转</td>
+</tr>
+<tr>
+<td>释放件不到位</td>
+<td>不转成已交付，不接下一任务</td>
+<td>排障及物体定位明确</td>
+</tr>
+<tr>
+<td>传感器矛盾</td>
+<td>进入NEEDS_REVIEW</td>
+<td>校准和完整恢复检查</td>
+</tr>
+<tr>
+<td>容器缺失／满载</td>
+<td>回收不进入不可接收路径</td>
+<td>换箱、登记和在位确认</td>
+</tr>
+</tbody></table></div>
+<p>“断电所有门打开”不作为方案：需要同时满足不夹人、不直通库存、不让湿巾泄漏的具体设计。每个执行件的弹簧、制动、重力运动及手动释放必须逐一论证。</p>
+<!-- figure-23 -->
+<h3 id="图23故障后如何停住并恢复">图23｜故障后如何停住并恢复</h3>
+<p><img src="%E5%9B%BE%E7%89%87/23_%E5%AE%89%E5%85%A8%E5%81%9C%E6%AD%A2%E4%B8%8E%E6%81%A2%E5%A4%8D%E6%B5%81%E7%A8%8B.svg" alt="故障后如何停住并恢复"></p>
+<p><em>故障分类决定停机范围和执行件安全状态。不得把所有门打开、自动反转或自动重发作为通用恢复策略。</em></p>
+<p><strong>闭环约束（V1.4复核）</strong></p>
+<p>断电恢复不自动续跑未知动作；读取持久化开始意图、取消封禁和原任务，结合实物判断。无法可信确认许可有效期或动作位置时进入待核验。固件回滚不能回滚执行历史；维修后还需平台核账和本地安全复位。</p>
+<p><img src="%E5%9B%BE%E7%89%87/156_21_%E7%BB%B4%E6%8A%A4%E8%BF%81%E7%A7%BB%E4%B8%8E%E6%81%A2%E5%A4%8D%E7%9A%84%E9%97%AD%E7%8E%AF.svg" alt="维护迁移与恢复的闭环"></p>
+<p><em>旧项目事件只入原任务审计与受控对账，不能当成新项目操作。</em></p>
+<p><strong>安全动作与记录失效：</strong> 网络或平台不得阻塞本地安全停止。存储故障时停止接新任务；已有动作优先按经验证的失电／安全策略停止或安全收尾，恢复后若缺失执行证据即转人工核验，不能因日志缺失推断未动作。电气安全评审及D05相关防护验证须覆盖安全链失效、控制重启和能量隔离，软件状态不能替代硬件风险评估。</p>
+<h2 id="4-电源预算与布线交付">4. 电源预算与布线交付</h2>
+<p>电气工程师填写各器件稳态、启动峰值、允许同时动作、限流、供电压降与温升。不能只把铭牌平均功率相加。电机干扰、门线圈瞬态、RFID电源噪声和控制器重启必须在整机同时动作时测试。</p>
+<p>电源／电机线、逻辑线和射频馈线按工程要求走线；有应力释放、防磨边与可维护连接器。标注保护接地、金属件等电位连接、熔断／断路器额定值及替换规格。线径、保护器和接地方案由合资格工程人员核定。</p>
+<!-- module-figure-67 -->
+<p><strong>子模块图｜电源预算与线束分层</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/067_05_%E7%94%B5%E6%BA%90%E9%A2%84%E7%AE%97%E4%B8%8E%E7%BA%BF%E6%9D%9F%E5%88%86%E5%B1%82.svg" alt="电源预算与线束分层"></p>
+<p><em>读图说明：保护、线径、接地与分支额定值由合资格工程人员核定。</em></p>
+<h2 id="5-必交电气文件">5. 必交电气文件</h2>
+<ul>
+<li>电气原理图、接线图、端子图和线束加工图。</li>
+<li>I/O表、驱动参数、射频配置、完整电源预算。</li>
+<li>风险评估与安全功能验证方案、掉电／重启行为表。</li>
+<li>元器件规格、合规证据、替代料验证要求。</li>
+<li>固件烧录、版本读取、恢复、检修和故障码说明。</li>
+</ul>
+<p>涉及市电和运动安全的检查由具备资格的人员执行；本包不提供绕过保护或带电排障步骤。</p>
+<!-- module-figure-68 -->
+<p><strong>子模块图｜电气交付文件对应关系</strong></p>
+<p><img src="%E5%9B%BE%E7%89%87/068_05_%E7%94%B5%E6%B0%94%E4%BA%A4%E4%BB%98%E6%96%87%E4%BB%B6%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB.svg" alt="电气交付文件对应关系"></p>
+<p><em>读图说明：功能框图不能代替接线与安全功能验证。</em></p>
+</article></main></body></html>

@@ -1,0 +1,1010 @@
+[
+  {
+    "number": 41,
+    "file": "041_04_H01_可拆料仓与导向.svg",
+    "title": "H01_可拆料仓与导向",
+    "chapter": "04",
+    "section": 1,
+    "caption": "导向净宽B仓、允许叠高h堆与抽出净距C拆均由样本和现场确定。",
+    "group": "hardware",
+    "subheading": "H01｜可拆料仓与导向",
+    "explanation": [
+      "导向板约束叠放姿态；满仓重量经底托和机架承受。",
+      "导向净宽B仓、允许叠高h堆与抽出净距C拆均由样本和现场确定。",
+      "停发并核对任务后，由维护面拆洗；补货按固定折口方向。"
+    ]
+  },
+  {
+    "number": 42,
+    "file": "042_04_H02_底托与皮带开窗.svg",
+    "title": "H02_底托与皮带开窗",
+    "chapter": "04",
+    "section": 1,
+    "caption": "开窗宽w窗、长度l窗及支撑比例可调比较；不以加压代替验证。",
+    "group": "hardware",
+    "subheading": "H02｜底托与皮带开窗",
+    "explanation": [
+      "底托承担部分堆重；开窗让送料带接触底层毛巾。",
+      "开窗宽w窗、长度l窗及支撑比例可调比较；不以加压代替验证。",
+      "检查开窗圆角、毛刺与底托表面；禁止割伤毛巾或标签。"
+    ]
+  },
+  {
+    "number": 43,
+    "file": "043_04_H03_M1送料平带与轴承.svg",
+    "title": "H03_M1送料平带与轴承",
+    "chapter": "04",
+    "section": 1,
+    "caption": "轴平行、张紧行程Δx、带材与预紧需配套标定。",
+    "group": "hardware",
+    "subheading": "H03｜M1送料平带与轴承",
+    "explanation": [
+      "减速电机经联接驱动主动轴，轴承承受轴系及皮带张紧载荷。",
+      "轴平行、张紧行程Δx、带材与预紧需配套标定。",
+      "隔离能源后换带；恢复护罩并做跑偏、打滑及真值条数复验。"
+    ]
+  },
+  {
+    "number": 44,
+    "file": "044_04_H04_弹性分离件.svg",
+    "title": "H04_弹性分离件",
+    "chapter": "04",
+    "section": 1,
+    "caption": "间隙g、预紧F预、接触材料分别调整；软巾厚度不等于条数。",
+    "group": "hardware",
+    "subheading": "H04｜弹性分离件",
+    "explanation": [
+      "分离垫抑制上层跟随；底条在皮带牵引下通过。",
+      "间隙g、预紧F预、接触材料分别调整；软巾厚度不等于条数。",
+      "记录高度基准和弹簧设定；更换磨耗垫后重新测停车窗口。"
+    ]
+  },
+  {
+    "number": 45,
+    "file": "045_04_H05_过渡板与剥离件.svg",
+    "title": "H05_过渡板与剥离件",
+    "chapter": "04",
+    "section": 1,
+    "caption": "过渡间隙g过渡及高度差Δh不能靠图估计；需薄巾、厚包边测试。",
+    "group": "hardware",
+    "subheading": "H05｜过渡板与剥离件",
+    "explanation": [
+      "过渡板跨越M1/M2段间位置；剥离部位防止布料随带回卷。",
+      "过渡间隙g过渡及高度差Δh不能靠图估计；需薄巾、厚包边测试。",
+      "拆下清绒毛并检查圆角；不得向运动间隙伸手清卡。"
+    ]
+  },
+  {
+    "number": 46,
+    "file": "046_04_H06_M2接料与受控定位.svg",
+    "title": "H06_M2接料与受控定位",
+    "chapter": "04",
+    "section": 1,
+    "caption": "v1/v2配合、停车滑行d停及L保持须覆盖实际展开姿态。",
+    "group": "hardware",
+    "subheading": "H06｜M2接料与受控定位",
+    "explanation": [
+      "M2独立接住本条；M1停车后仍可按验证条件将其完整带入保持区。",
+      "v1/v2配合、停车滑行d停及L保持须覆盖实际展开姿态。",
+      "轴动不代表布动；换带或速度调整后重测交接与停车证据。"
+    ]
+  },
+  {
+    "number": 47,
+    "file": "047_04_H07_身份保持与释放件.svg",
+    "title": "H07_身份保持与释放件",
+    "chapter": "04",
+    "section": 1,
+    "caption": "保持长度L保持覆盖实物及停车余量；挡板行程和到位反馈成对设计。",
+    "group": "hardware",
+    "subheading": "H07｜身份保持与释放件",
+    "explanation": [
+      "毛巾保持在公众不可触及区域；身份和物理条件通过后才释放。",
+      "保持长度L保持覆盖实物及停车余量；挡板行程和到位反馈成对设计。",
+      "夹巾、无身份或不到位时保持异常；由授权维护路径取出。"
+    ]
+  },
+  {
+    "number": 48,
+    "file": "048_04_H08_固定隔离与取物斗.svg",
+    "title": "H08_固定隔离与取物斗",
+    "chapter": "04",
+    "section": 1,
+    "caption": "入口和通道几何须完成可触及与拉拽验证；弯折不等于防护合格。",
+    "group": "hardware",
+    "subheading": "H08｜固定隔离与取物斗",
+    "explanation": [
+      "固定防护隔开库存及危险运动；取物斗只容纳本次交付。",
+      "入口和通道几何须完成可触及与拉拽验证；弯折不等于防护合格。",
+      "取物斗可独立清洁；S2/S3须与本次释放过程有序关联。"
+    ]
+  },
+  {
+    "number": 49,
+    "file": "049_04_H09_机架传动腔与检修.svg",
+    "title": "H09_机架传动腔与检修",
+    "chapter": "04",
+    "section": 1,
+    "caption": "安装基准A、轴线平行度、紧固与检修净距均由工程图定义。",
+    "group": "hardware",
+    "subheading": "H09｜机架传动腔与检修",
+    "explanation": [
+      "刚性机架保持轴系位置；传动和电气维护空间与净污路径分开。",
+      "安装基准A、轴线平行度、紧固与检修净距均由工程图定义。",
+      "拆护罩前隔离能源；换件后检查线束、防护、紧固和任务清场。"
+    ]
+  },
+  {
+    "number": 50,
+    "file": "050_01_项目已确定的六个边界.svg",
+    "title": "项目已确定的六个边界",
+    "chapter": "01",
+    "section": 2,
+    "caption": "图示为已确认需求，不是已实现能力。",
+    "group": "section"
+  },
+  {
+    "number": 51,
+    "file": "051_01_成本路线怎样比较.svg",
+    "title": "成本路线怎样比较",
+    "chapter": "01",
+    "section": 4,
+    "caption": "用同周期、同服务口径比较；包装尚未选定。",
+    "group": "section"
+  },
+  {
+    "number": 52,
+    "file": "052_01_汇报四个风险与证据.svg",
+    "title": "汇报四个风险与证据",
+    "chapter": "01",
+    "section": 5,
+    "caption": "四类风险分别验证，不能用一个总体成功率覆盖。",
+    "group": "section"
+  },
+  {
+    "number": 53,
+    "file": "053_01_文档交付与工程交付边界.svg",
+    "title": "文档交付与工程交付边界",
+    "chapter": "01",
+    "section": 6,
+    "caption": "文档完整不等于实物可行性已经验证。",
+    "group": "section"
+  },
+  {
+    "number": 54,
+    "file": "054_01_负责人启动决策顺序.svg",
+    "title": "负责人启动决策顺序",
+    "chapter": "01",
+    "section": 7,
+    "caption": "预算不沿用缺项的旧整柜估算。",
+    "group": "section"
+  },
+  {
+    "number": 55,
+    "file": "055_02_使用者各自怎样参与.svg",
+    "title": "使用者各自怎样参与",
+    "chapter": "02",
+    "section": 1,
+    "caption": "每个角色承担不同动作；首期功能范围见本节。",
+    "group": "section"
+  },
+  {
+    "number": 56,
+    "file": "056_02_需求如何追到验收证据.svg",
+    "title": "需求如何追到验收证据",
+    "chapter": "02",
+    "section": 2,
+    "caption": "可追溯性按需求编号建立，不能用概念图替代证据。",
+    "group": "section"
+  },
+  {
+    "number": 57,
+    "file": "057_02_补货与收污容量怎样约束.svg",
+    "title": "补货与收污容量怎样约束",
+    "chapter": "02",
+    "section": 4,
+    "caption": "容量必须用现场需求与样机容积验证，不从外观推算。",
+    "group": "section"
+  },
+  {
+    "number": 58,
+    "file": "058_02_首期领用与代还规则.svg",
+    "title": "首期领用与代还规则",
+    "chapter": "02",
+    "section": 5,
+    "caption": "代还人不是销账依据；跨项目先走受控物业流程。",
+    "group": "section"
+  },
+  {
+    "number": 59,
+    "file": "059_02_指标怎样成为验收标准.svg",
+    "title": "指标怎样成为验收标准",
+    "chapter": "02",
+    "section": 6,
+    "caption": "99.5%和8秒是讨论起点，不是已经达到的指标。",
+    "group": "section"
+  },
+  {
+    "number": 60,
+    "file": "060_03_三种单条形成方式.svg",
+    "title": "三种单条形成方式",
+    "chapter": "03",
+    "section": 2,
+    "caption": "这是机构原理对照；A主台架、B对照、C备选。",
+    "group": "section"
+  },
+  {
+    "number": 61,
+    "file": "061_03_成本配置怎样取舍.svg",
+    "title": "成本配置怎样取舍",
+    "chapter": "03",
+    "section": 3,
+    "caption": "先验证必要功能，再用生命周期成本决定简化。",
+    "group": "section"
+  },
+  {
+    "number": 62,
+    "file": "062_03_净污两条独立物理路径.svg",
+    "title": "净污两条独立物理路径",
+    "chapter": "03",
+    "section": 4,
+    "caption": "净污不能共用接触面；发放释放前本条须脱离库存。",
+    "group": "section"
+  },
+  {
+    "number": 63,
+    "file": "063_03_什么时候切换包装对照路线.svg",
+    "title": "什么时候切换包装对照路线",
+    "chapter": "03",
+    "section": 5,
+    "caption": "不能以单次成功视频决定量产路线。",
+    "group": "section"
+  },
+  {
+    "number": 64,
+    "file": "064_04_电机选型计算链.svg",
+    "title": "电机选型计算链",
+    "chapter": "04",
+    "section": 6,
+    "caption": "本节数值仅演示；不能把稳态F×v直接当电机额定功率。",
+    "group": "section"
+  },
+  {
+    "number": 65,
+    "file": "065_04_机械图纸应交付哪些界面.svg",
+    "title": "机械图纸应交付哪些界面",
+    "chapter": "04",
+    "section": 7,
+    "caption": "每个检查项关联图纸编号和版本。",
+    "group": "section"
+  },
+  {
+    "number": 66,
+    "file": "066_05_I_O逐点位置与作用.svg",
+    "title": "I_O逐点位置与作用",
+    "chapter": "05",
+    "section": 2,
+    "caption": "此图不是接线图；传感器信号均有局限，针脚、电平、断线行为需另行定义。",
+    "group": "section"
+  },
+  {
+    "number": 67,
+    "file": "067_05_电源预算与线束分层.svg",
+    "title": "电源预算与线束分层",
+    "chapter": "05",
+    "section": 4,
+    "caption": "保护、线径、接地与分支额定值由合资格工程人员核定。",
+    "group": "section"
+  },
+  {
+    "number": 68,
+    "file": "068_05_电气交付文件对应关系.svg",
+    "title": "电气交付文件对应关系",
+    "chapter": "05",
+    "section": 5,
+    "caption": "功能框图不能代替接线与安全功能验证。",
+    "group": "section"
+  },
+  {
+    "number": 69,
+    "file": "069_06_RFID部件如何协作.svg",
+    "title": "RFID部件如何协作",
+    "chapter": "06",
+    "section": 1,
+    "caption": "RFID用于识别标签身份；标签耐受与湿态读性能是不同问题。",
+    "group": "section"
+  },
+  {
+    "number": 70,
+    "file": "070_06_毛巾身份从入库到换标.svg",
+    "title": "毛巾身份从入库到换标",
+    "chapter": "06",
+    "section": 2,
+    "caption": "TID只作适用芯片的辅助核验，不普遍等同密码学防伪。",
+    "group": "section"
+  },
+  {
+    "number": 71,
+    "file": "071_06_RFID标定的有效窗口.svg",
+    "title": "RFID标定的有效窗口",
+    "chapter": "06",
+    "section": 5,
+    "caption": "库存、邻柜、满湿箱、干湿和标签姿态都要覆盖。",
+    "group": "section"
+  },
+  {
+    "number": 72,
+    "file": "072_07_湿巾回收的七步互锁.svg",
+    "title": "湿巾回收的七步互锁",
+    "chapter": "07",
+    "section": 2,
+    "caption": "接收与隔离合并示图；任一失败保持异常，不因读到标签就销账。",
+    "group": "section"
+  },
+  {
+    "number": 73,
+    "file": "073_07_未知湿巾两种处理结构.svg",
+    "title": "未知湿巾两种处理结构",
+    "chapter": "07",
+    "section": 3,
+    "caption": "“已收件待核验”不能显示为“归还成功”。",
+    "group": "section"
+  },
+  {
+    "number": 74,
+    "file": "074_07_归还防错的三道核验.svg",
+    "title": "归还防错的三道核验",
+    "chapter": "07",
+    "section": 4,
+    "caption": "图为核验维度；多条仅读一条等风险必须通过实物挑战关闭。",
+    "group": "section"
+  },
+  {
+    "number": 75,
+    "file": "075_07_污巾如何重新成为净巾.svg",
+    "title": "污巾如何重新成为净巾",
+    "chapter": "07",
+    "section": 5,
+    "caption": "归还成功仅结束借用，不代表卫生合格或可直接再发放。",
+    "group": "section"
+  },
+  {
+    "number": 76,
+    "file": "076_08_从交付证据到借用确认.svg",
+    "title": "从交付证据到借用确认",
+    "chapter": "08",
+    "section": 3,
+    "caption": "单次跳变或超时不能作成功证据；取走不证明自然人身份。",
+    "group": "section"
+  },
+  {
+    "number": 77,
+    "file": "077_08_账号U与下一条毛巾T如何绑定.svg",
+    "title": "账号U与下一条毛巾T如何绑定",
+    "chapter": "08",
+    "section": 4,
+    "caption": "未取走保留任务与额度；暴露过的遗留毛巾按卫生规则再处理。",
+    "group": "section"
+  },
+  {
+    "number": 78,
+    "file": "078_08_三层幂等分别解决什么.svg",
+    "title": "三层幂等分别解决什么",
+    "chapter": "08",
+    "section": 5,
+    "caption": "Redis锁过期不是再次驱动的许可；未知结果进入待核验。",
+    "group": "section"
+  },
+  {
+    "number": 79,
+    "file": "079_08_每次数据与设备操作的授权关口.svg",
+    "title": "每次数据与设备操作的授权关口",
+    "chapter": "08",
+    "section": 6,
+    "caption": "前端传来的ID只是定位条件；导出与统计执行同样范围。",
+    "group": "section"
+  },
+  {
+    "number": 80,
+    "file": "080_08_实施前核验真实接入点.svg",
+    "title": "实施前核验真实接入点",
+    "chapter": "08",
+    "section": 7,
+    "caption": "本文是目标设计；未凭文档假设已有Controller、接口或数据表。",
+    "group": "section"
+  },
+  {
+    "number": 81,
+    "file": "081_09_逻辑接口与参与者.svg",
+    "title": "逻辑接口与参与者",
+    "chapter": "09",
+    "section": 1,
+    "caption": "HTTP应答或QoS不等于物理交付成功。",
+    "group": "section"
+  },
+  {
+    "number": 82,
+    "file": "082_09_发放命令接受与拒绝分支.svg",
+    "title": "发放命令接受与拒绝分支",
+    "chapter": "09",
+    "section": 2,
+    "caption": "已接受命令到期不抹去物理事实；未知结果不能换ID重发。",
+    "group": "section"
+  },
+  {
+    "number": 83,
+    "file": "083_09_事件数据怎样形成可追溯证据.svg",
+    "title": "事件数据怎样形成可追溯证据",
+    "chapter": "09",
+    "section": 3,
+    "caption": "布尔字段只是经验证规则的摘要，不能随意置true宣称完成。",
+    "group": "section"
+  },
+  {
+    "number": 84,
+    "file": "084_09_超时、补传与重启恢复.svg",
+    "title": "超时、补传与重启恢复",
+    "chapter": "09",
+    "section": 4,
+    "caption": "安全动作不等待网络；存储不能可靠写入时停止接新任务。",
+    "group": "section"
+  },
+  {
+    "number": 85,
+    "file": "085_09_故障码如何决定处理路径.svg",
+    "title": "故障码如何决定处理路径",
+    "chapter": "09",
+    "section": 5,
+    "caption": "正式数值业务码要按Liveo现行规范登记，图中只列语义。",
+    "group": "section"
+  },
+  {
+    "number": 86,
+    "file": "086_09_供应商联调资料的使用顺序.svg",
+    "title": "供应商联调资料的使用顺序",
+    "chapter": "09",
+    "section": 6,
+    "caption": "只有远程开门接口不满足本项目任务与物理证据契约。",
+    "group": "section"
+  },
+  {
+    "number": 87,
+    "file": "087_09_归还事件与平台最终确认.svg",
+    "title": "归还事件与平台最终确认",
+    "chapter": "09",
+    "section": 7,
+    "caption": "任一步不明转RETURN_PENDING_REVIEW；离线移交不能直接显示归还成功。",
+    "group": "section"
+  },
+  {
+    "number": 88,
+    "file": "088_10_按模块搜索与筛选商品线索.svg",
+    "title": "按模块搜索与筛选商品线索",
+    "chapter": "10",
+    "section": 2,
+    "caption": "排除纸巾视频代替浴巾测试、无本地协议等不满足项。",
+    "group": "section"
+  },
+  {
+    "number": 89,
+    "file": "089_10_已有候选线索处在哪个证据层.svg",
+    "title": "已有候选线索处在哪个证据层",
+    "chapter": "10",
+    "section": 3,
+    "caption": "当前并未完成1688定选；不由品牌名称推断整机兼容。",
+    "group": "section"
+  },
+  {
+    "number": 90,
+    "file": "090_10_一份完整询价应返回什么.svg",
+    "title": "一份完整询价应返回什么",
+    "chapter": "10",
+    "section": 4,
+    "caption": "询价正文尚未发送；附件按采购与专利保密边界选择。",
+    "group": "section"
+  },
+  {
+    "number": 91,
+    "file": "091_10_供应商先过门槛再评分.svg",
+    "title": "供应商先过门槛再评分",
+    "chapter": "10",
+    "section": 5,
+    "caption": "未验证项写证据未取得；样品裸价与含安装整机价不能直接比较。",
+    "group": "section"
+  },
+  {
+    "number": 92,
+    "file": "092_11_模块BOM逐项拆分.svg",
+    "title": "模块BOM逐项拆分",
+    "chapter": "11",
+    "section": 2,
+    "caption": "空白报价不是0元；图示为采购范围，不是最终品牌或数量清单。",
+    "group": "section"
+  },
+  {
+    "number": 93,
+    "file": "093_11_项目费用按生命周期归集.svg",
+    "title": "项目费用按生命周期归集",
+    "chapter": "11",
+    "section": 3,
+    "caption": "首批标签与毛巾不得在每次归还重复计购置费。",
+    "group": "section"
+  },
+  {
+    "number": 94,
+    "file": "094_11_纸套与裸巾的盈亏比较.svg",
+    "title": "纸套与裸巾的盈亏比较",
+    "chapter": "11",
+    "section": 4,
+    "caption": "包装的机械与维护节省须大于新增包装成本；没有报价不画虚假成本曲线。",
+    "group": "section"
+  },
+  {
+    "number": 95,
+    "file": "095_11_采购冻结与替代料批准.svg",
+    "title": "采购冻结与替代料批准",
+    "chapter": "11",
+    "section": 5,
+    "caption": "“参数差不多”不构成替料批准；合同明确图纸、源码和模具权属。",
+    "group": "section"
+  },
+  {
+    "number": 96,
+    "file": "096_12_生产放行文件如何互相对应.svg",
+    "title": "生产放行文件如何互相对应",
+    "chapter": "12",
+    "section": 1,
+    "caption": "文件编号和版本应一致；未完成工程与安全评审不能量产。",
+    "group": "section"
+  },
+  {
+    "number": 97,
+    "file": "097_12_来料从到货到工位.svg",
+    "title": "来料从到货到工位",
+    "chapter": "12",
+    "section": 2,
+    "caption": "保留标准毛巾、标签、带材与分离垫样品作为对照。",
+    "group": "section"
+  },
+  {
+    "number": 98,
+    "file": "098_12_生产工位的串联放行.svg",
+    "title": "生产工位的串联放行",
+    "chapter": "12",
+    "section": 3,
+    "caption": "每个工位按正文检查项签核；紧固扭矩和张力取自批准图纸。",
+    "group": "section"
+  },
+  {
+    "number": 99,
+    "file": "099_12_首件怎样暴露工艺缺口.svg",
+    "title": "首件怎样暴露工艺缺口",
+    "chapter": "12",
+    "section": 4,
+    "caption": "不依赖个人手感保存参数；治具与文件一同受控。",
+    "group": "section"
+  },
+  {
+    "number": 100,
+    "file": "100_12_不合格品追到哪些设备.svg",
+    "title": "不合格品追到哪些设备",
+    "chapter": "12",
+    "section": 5,
+    "caption": "设计验证证明边界；每台FAT检查制造一致性，两者不能互相替代。",
+    "group": "section"
+  },
+  {
+    "number": 101,
+    "file": "101_12_工厂到现场的运输衔接.svg",
+    "title": "工厂到现场的运输衔接",
+    "chapter": "12",
+    "section": 6,
+    "caption": "运输可能改变位置；FAT不能替代现场SAT。",
+    "group": "section"
+  },
+  {
+    "number": 102,
+    "file": "102_13_台架先验证最关键的不确定性.svg",
+    "title": "台架先验证最关键的不确定性",
+    "chapter": "13",
+    "section": 1,
+    "caption": "一次只改变可解释变量；保留失败记录，不先投入完整柜体掩盖问题。",
+    "group": "section"
+  },
+  {
+    "number": 103,
+    "file": "103_13_V01—V16按风险分组覆盖.svg",
+    "title": "V01—V16按风险分组覆盖",
+    "chapter": "13",
+    "section": 3,
+    "caption": "分组用于阅读；完整方法与需求编号以本节逐行用例为准。",
+    "group": "section"
+  },
+  {
+    "number": 104,
+    "file": "104_13_可重复的湿态样本怎么制作.svg",
+    "title": "可重复的湿态样本怎么制作",
+    "chapter": "13",
+    "section": 4,
+    "caption": "该数值是干基加水比，不能当作RFID自动测湿结果。",
+    "group": "section"
+  },
+  {
+    "number": 105,
+    "file": "105_13_每次试验怎样进入统计.svg",
+    "title": "每次试验怎样进入统计",
+    "chapter": "13",
+    "section": 5,
+    "caption": "预先定义有效尝试分母；混合版本和挑选样本不能合成通过率。",
+    "group": "section"
+  },
+  {
+    "number": 106,
+    "file": "106_13_设计验证的退出判断.svg",
+    "title": "设计验证的退出判断",
+    "chapter": "13",
+    "section": 6,
+    "caption": "错绑、重复出巾、危险触及与假归还不能被整体成功率掩盖。",
+    "group": "section"
+  },
+  {
+    "number": 107,
+    "file": "107_14_每台FAT检查对象.svg",
+    "title": "每台FAT检查对象",
+    "chapter": "14",
+    "section": 2,
+    "caption": "具体这台逐项留下证据；短测次数不代表寿命或总体可靠性。",
+    "group": "section"
+  },
+  {
+    "number": 108,
+    "file": "108_14_FAT实际执行顺序.svg",
+    "title": "FAT实际执行顺序",
+    "chapter": "14",
+    "section": 3,
+    "caption": "先静态及电气检查，再通电运动；检查结果本包尚未填写。",
+    "group": "section"
+  },
+  {
+    "number": 109,
+    "file": "109_14_FAT缺陷如何处理.svg",
+    "title": "FAT缺陷如何处理",
+    "chapter": "14",
+    "section": 4,
+    "caption": "安全与关键功能缺陷不能有条件放行；不能以备注绕过阻断项。",
+    "group": "section"
+  },
+  {
+    "number": 110,
+    "file": "110_14_出厂交付包六类资料.svg",
+    "title": "出厂交付包六类资料",
+    "chapter": "14",
+    "section": 5,
+    "caption": "凭据受控移交，不写入公共文档包；FAT不代表SAT通过。",
+    "group": "section"
+  },
+  {
+    "number": 111,
+    "file": "111_15_现场安装的先后依赖.svg",
+    "title": "现场安装的先后依赖",
+    "chapter": "15",
+    "section": 2,
+    "caption": "图为工序关系，不提供市电接线或绕过保护的操作方法。",
+    "group": "section"
+  },
+  {
+    "number": 112,
+    "file": "112_15_SAT现场三组验证.svg",
+    "title": "SAT现场三组验证",
+    "chapter": "15",
+    "section": 4,
+    "caption": "使用授权测试账号和测试毛巾；关键验证完成前不向真实住户开放。",
+    "group": "section"
+  },
+  {
+    "number": 113,
+    "file": "113_15_培训到试运营的验证闭环.svg",
+    "title": "培训到试运营的验证闭环",
+    "chapter": "15",
+    "section": 5,
+    "caption": "关键安全或账务错误出现即暂停相关通道并保留证据。",
+    "group": "section"
+  },
+  {
+    "number": 114,
+    "file": "114_15_现场交接后是否扩点.svg",
+    "title": "现场交接后是否扩点",
+    "chapter": "15",
+    "section": 6,
+    "caption": "已安装不代表可直接扩点，未关闭问题须有受控记录。",
+    "group": "section"
+  },
+  {
+    "number": 115,
+    "file": "115_16_每日运营检查与补货收污.svg",
+    "title": "每日运营检查与补货收污",
+    "chapter": "16",
+    "section": 1,
+    "caption": "清洁按批准方法；不直接向电气或传动部位喷淋。",
+    "group": "section"
+  },
+  {
+    "number": 116,
+    "file": "116_16_真实状态怎样显示给住户.svg",
+    "title": "真实状态怎样显示给住户",
+    "chapter": "16",
+    "section": 2,
+    "caption": "界面不向住户暴露M1或EPC等内部实现词。",
+    "group": "section"
+  },
+  {
+    "number": 117,
+    "file": "117_16_故障处置按实物位置分类.svg",
+    "title": "故障处置按实物位置分类",
+    "chapter": "16",
+    "section": 3,
+    "caption": "人工补正留操作人、理由、任务、证据和前后状态，不能删记录掩盖差异。",
+    "group": "section"
+  },
+  {
+    "number": 118,
+    "file": "118_16_维护周期从何而来.svg",
+    "title": "维护周期从何而来",
+    "chapter": "16",
+    "section": 4,
+    "caption": "没有实测不写固定寿命；未经批准的替代料不能现场直接换。",
+    "group": "section"
+  },
+  {
+    "number": 119,
+    "file": "119_16_远程维护前的状态关口.svg",
+    "title": "远程维护前的状态关口",
+    "chapter": "16",
+    "section": 5,
+    "caption": "远程维护不提供无条件强制出巾；升级保留历史任务。",
+    "group": "section"
+  },
+  {
+    "number": 120,
+    "file": "120_16_运营指标怎样避免看错.svg",
+    "title": "运营指标怎样避免看错",
+    "chapter": "16",
+    "section": 6,
+    "caption": "按每台和每Project统计；盘差不一概叫作丢失。",
+    "group": "section"
+  },
+  {
+    "number": 121,
+    "file": "121_16_停运或迁移要闭合哪些事项.svg",
+    "title": "停运或迁移要闭合哪些事项",
+    "chapter": "16",
+    "section": 7,
+    "caption": "按批准保留期归档；另一地点的读区结论不能直接沿用。",
+    "group": "section"
+  },
+  {
+    "number": 122,
+    "file": "122_17_交底主题从装置到具体方法.svg",
+    "title": "交底主题从装置到具体方法",
+    "chapter": "17",
+    "section": 1,
+    "caption": "标题是讨论稿；通用RFID＋App组合不等于可授权创新。",
+    "group": "section"
+  },
+  {
+    "number": 123,
+    "file": "123_17_技术问题不能只写业务愿望.svg",
+    "title": "技术问题不能只写业务愿望",
+    "chapter": "17",
+    "section": 2,
+    "caption": "把问题落到可观察物理现象，不把扫码和双门本身认作创新。",
+    "group": "section"
+  },
+  {
+    "number": 124,
+    "file": "124_17_专利标号与功能结构.svg",
+    "title": "专利标号与功能结构",
+    "chapter": "17",
+    "section": 3,
+    "caption": "实际连接、几何和具体构造仍需工程实现；不能将本图直接当作定型专利附图提交。",
+    "group": "section"
+  },
+  {
+    "number": 125,
+    "file": "125_17_四类研究方向各需要什么证据.svg",
+    "title": "四类研究方向各需要什么证据",
+    "chapter": "17",
+    "section": 5,
+    "caption": "异常移交和任务恢复分别形成细节；预期效果尚须验证。",
+    "group": "section"
+  },
+  {
+    "number": 126,
+    "file": "126_17_从检索线索到特征比较.svg",
+    "title": "从检索线索到特征比较",
+    "chapter": "17",
+    "section": 6,
+    "caption": "已有专利链接仅是线索；本轮配图不构成查新或法律状态意见。",
+    "group": "section"
+  },
+  {
+    "number": 127,
+    "file": "127_17_国内申请筹备与权属安排.svg",
+    "title": "国内申请筹备与权属安排",
+    "chapter": "17",
+    "section": 7,
+    "caption": "这是一张筹备关系图，不是完整法定办理程序，也不承诺授权。",
+    "group": "section"
+  },
+  {
+    "number": 128,
+    "file": "128_17_代理师材料包怎样组成.svg",
+    "title": "代理师材料包怎样组成",
+    "chapter": "17",
+    "section": 8,
+    "caption": "资料应与真实工程版本一致；图多不能替代可实现细节。",
+    "group": "section"
+  },
+  {
+    "number": 129,
+    "file": "129_18_D01—D16按放行关口关闭.svg",
+    "title": "D01—D16按放行关口关闭",
+    "chapter": "18",
+    "section": 1,
+    "caption": "每个事项的准确阻断阶段按本节台账逐项执行。",
+    "group": "section"
+  },
+  {
+    "number": 130,
+    "file": "130_18_优先风险如何进入放行判断.svg",
+    "title": "优先风险如何进入放行判断",
+    "chapter": "18",
+    "section": 2,
+    "caption": "风险未关闭不能靠文档完整或总体成功率宣布通过。",
+    "group": "section"
+  },
+  {
+    "number": 131,
+    "file": "131_18_变更从提出到现场生效.svg",
+    "title": "变更从提出到现场生效",
+    "chapter": "18",
+    "section": 3,
+    "caption": "旧版和失败证据保留；更新参数同样属于受控变更。",
+    "group": "section"
+  },
+  {
+    "number": 132,
+    "file": "132_18_文档审查与实物风险分别关闭.svg",
+    "title": "文档审查与实物风险分别关闭",
+    "chapter": "18",
+    "section": 4,
+    "caption": "本次图文修订关闭的是解释缺口，不自动关闭工程决策。",
+    "group": "section"
+  },
+  {
+    "number": 133,
+    "file": "133_19_G0输入冻结.svg",
+    "title": "G0输入冻结",
+    "chapter": "19",
+    "section": 2,
+    "caption": "G0需允许另一工程师重复测量；未知项有责任和阻断阶段。",
+    "group": "section"
+  },
+  {
+    "number": 134,
+    "file": "134_19_G1供应商与台架.svg",
+    "title": "G1供应商与台架",
+    "chapter": "19",
+    "section": 3,
+    "caption": "没有稳定分离窗口，不批准整柜批量。",
+    "group": "section"
+  },
+  {
+    "number": 135,
+    "file": "135_19_G2-A保持识别与出口.svg",
+    "title": "G2-A保持识别与出口",
+    "chapter": "19",
+    "section": 4,
+    "caption": "身份未知不释放；出口防护与本地安全必须验证。",
+    "group": "section"
+  },
+  {
+    "number": 136,
+    "file": "136_19_G2-B独立湿巾回收.svg",
+    "title": "G2-B独立湿巾回收",
+    "chapter": "19",
+    "section": 5,
+    "caption": "不把读数当落箱，不把未知毛巾销给当前扫码人。",
+    "group": "section"
+  },
+  {
+    "number": 137,
+    "file": "137_19_G2-C平台与柜端闭环.svg",
+    "title": "G2-C平台与柜端闭环",
+    "chapter": "19",
+    "section": 6,
+    "caption": "成功与异常都要可解释；未实现和未测试不能签通过。",
+    "group": "section"
+  },
+  {
+    "number": 138,
+    "file": "138_19_G3出图试制与FAT.svg",
+    "title": "G3出图试制与FAT",
+    "chapter": "19",
+    "section": 7,
+    "caption": "输出T07/T08及受控交付包；关键缺陷未关闭不发运。",
+    "group": "section"
+  },
+  {
+    "number": 139,
+    "file": "139_19_G4-G5现场到批量决策.svg",
+    "title": "G4-G5现场到批量决策",
+    "chapter": "19",
+    "section": 8,
+    "caption": "排期依据退出条件与实际交期，不虚构固定量产日期。",
+    "group": "section"
+  },
+  {
+    "number": 140,
+    "file": "140_19_谁对哪个交付结果负责.svg",
+    "title": "谁对哪个交付结果负责",
+    "chapter": "19",
+    "section": 9,
+    "caption": "模块各有职责；接口冲突由整机负责人统一闭环。",
+    "group": "section"
+  },
+  {
+    "number": 141,
+    "file": "141_20_文档依据与冲突处理.svg",
+    "title": "文档依据与冲突处理",
+    "chapter": "20",
+    "section": 1,
+    "caption": "历史内容不自动构成用户指令或技术定论。",
+    "group": "section"
+  },
+  {
+    "number": 142,
+    "file": "142_20_公开来源能证明到哪一层.svg",
+    "title": "公开来源能证明到哪一层",
+    "chapter": "20",
+    "section": 2,
+    "caption": "配图沿用本节已有核验状态，没有把本次排图描述为重新联网查证。",
+    "group": "section"
+  },
+  {
+    "number": 143,
+    "file": "143_20_历史研究线索如何升级为可用证据.svg",
+    "title": "历史研究线索如何升级为可用证据",
+    "chapter": "20",
+    "section": 3,
+    "caption": "访问失败或未复核的链接不能用来保证现货、价格、适配或法律结论。",
+    "group": "section"
+  },
+  {
+    "number": 144,
+    "file": "144_20_旧说法如何改为可验证规则.svg",
+    "title": "旧说法如何改为可验证规则",
+    "chapter": "20",
+    "section": 4,
+    "caption": "详细十二项纠正以本节表格为准；新增图继承相同边界。",
+    "group": "section"
+  },
+  {
+    "number": 145,
+    "file": "145_20_三种图各自怎样使用.svg",
+    "title": "三种图各自怎样使用",
+    "chapter": "20",
+    "section": 5,
+    "caption": "图中的柜型、比例及候选结构不能被当成同一台定型产品。",
+    "group": "section"
+  },
+  {
+    "number": 146,
+    "file": "146_20_图文版本怎样保持一致.svg",
+    "title": "图文版本怎样保持一致",
+    "chapter": "20",
+    "section": 6,
+    "caption": "内部技术采购资料按分享对象选择；原始失败证据不得被覆盖。",
+    "group": "section"
+  }
+]
