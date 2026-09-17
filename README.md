@@ -6,11 +6,11 @@
 
 - **在 GitHub 内阅读**：[从这里开始](docs/README_从这里开始.md)、[专利技术交底书](patent/智能毛巾柜专利技术交底书.md)、[统一图册索引](docs/图册索引.md)。Markdown 中的图片和相对链接可直接查看。
 - **图文网页**：下载或克隆仓库，打开根目录 [index.html](index.html)。两套资料各有独立的 [总包入口](docs/index.html) 和 [专利入口](patent/index.html)，可相互跳转。
-- **在线网页**：当前未启用 GitHub Pages。GitHub 仓库中的 HTML 链接显示源码，不能当作已上线网页。启用前需要明确站点访问范围；私有仓库与 Pages 网页可见性是两回事。
+- **在线网页**：[文档中心](https://jetty-guo.github.io/Smart_towel_cabinet/) · [完整图文总包](https://jetty-guo.github.io/Smart_towel_cabinet/docs/index.html) · [专利交底书](https://jetty-guo.github.io/Smart_towel_cabinet/patent/index.html)。
 - [完整文件目录](文件目录.md)
 - [入库与索引检查记录](入库与索引检查记录.md)
 
-已按要求保持私有仓库，未启用 GitHub Pages。
+访问范围：仓库及 GitHub Pages 网页均公开，包含完整文档总包与专利交底书。
 
 ## 总包章节
 
@@ -73,4 +73,4 @@ python3 -m http.server 8080 --bind 127.0.0.1
 
 ## Pages 部署入口
 
-如决定发布网页，在仓库 Settings → Pages 选择从分支发布，分支 main、目录 / (root)。根目录已包含 index.html 和 .nojekyll，全部内部路径使用相对链接，兼容仓库子路径。账号方案是否允许私有仓库 Pages 以 GitHub 设置为准；启用成功后再记录实际网址。
+GitHub Pages 从 main 分支的 / (root) 发布。根目录 index.html 为文档中心入口，.nojekyll 保留静态文件路径。后续推送到 main 后，由 GitHub Pages 自动构建并更新网页。
