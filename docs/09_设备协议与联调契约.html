@@ -423,4 +423,46 @@
 <p><em>投放人不等于原借用人；禁止按事件到达时“最新一笔借用”随意销账。</em></p>
 <p><strong>回收确认握手补充：</strong> RETURN_IDENTIFIED仅上报候选。正常路由开放前，平台给出本回执对应资产及原轮次的核验结果，柜端持久化该结果并核本地路由安全；结果未知／失联走保持或逐件隔离。若断网发生在正常转移已经不可逆开始之后，只安全完成既定转移、记录实际容器位置并冻结该批正常收运／重发；必要的卫生处置只能走07章有保管责任的封存异常交接，不能反向搬回或伪记为隔离位；恢复后核验原回执再解除限制。平台最终应用前仍显示待同步。</p>
 <p><strong>ReturnRoutePermit（建议逻辑契约）：</strong> 绑定returnSessionId、assetRef或unknownItemRef、matchedIssueSessionId／assetCycleVersion（未知则明确为空且仅允许隔离）、deviceId、channelEpoch、assignmentVersion、targetBinId／isolationSlotId、binCycle及capacityReservationId、有效期。平台批准正常路线时先锁定原借用轮次，柜端落盘并核到位及本地安全后才转移；容器缺失、换箱／批次改变或容量不足均使未开始的路线许可失效。容量预留与路线授权原子更新，终止会话仅在确认未移交后释放预留；完成后转为实际占用。不可逆转移开始后不得换箱或重分配该预留，必须按真实接收结果对账。</p>
+<h2 id="8-协议实施包的冻结补充2026-09-19">8. 协议实施包的冻结补充（2026-09-19）</h2>
+<p><a href="22_%E5%9B%BA%E5%AE%9A%E6%A8%A1%E5%9E%8B%E4%B8%8B%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E5%AE%A1%E6%9F%A5%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%A1%A5%E5%85%85.html">22章第7—8节</a>细化本章建议契约：所有命令、许可、事件、应用确认和查询都需可校验schema、条件字段、空值语义、载荷上限、合法状态迁移、版本兼容及黄金报文。柜内总线协议与柜端MQTT分别交付；通信回调不能直接获得电机动作权。</p>
+<p>同一任务的持久化接受、开始意图、取消封禁和恢复须在写入/动作边界验证；共享读写器、供电及维护资源须有明确互锁与并发证据。保持1.2-draft状态，未经过双方签核联调不得改成正式发布版。SI08—SI11仍未关闭。</p>
+
+<h2 id="9-四项契约补充与签核输入2026-09-20">9. 四项契约补充与签核输入（2026-09-20）</h2>
+<p>执行<a href="21_%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%80%BB%E8%BE%91%E9%97%AD%E7%8E%AF%E4%B8%8E%E9%AA%8C%E6%94%B6%E7%9F%A9%E9%98%B5.html">21章第14节</a>和<a href="23_%E5%8D%81%E8%BD%AE%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%80%BB%E8%BE%91%E5%A4%8D%E6%A0%B8%E4%B8%8E%E4%BF%AE%E8%AE%A2.html">23章反例</a>。以下是1.2-draft待签核语义增量，不宣称已有接口或兼容发布。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>对象</th>
+<th>必补语义</th>
+<th>拒绝／恢复边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>维护接管</td>
+<td>原任务、channelEpoch、maintenanceSessionId、授权引用、柜端耐久接管确认和证据版本</td>
+<td>与正常取走判定串行；未确认接管不允许假定工作人员取出已被排除在自动记账之外</td>
+</tr>
+<tr>
+<td>命令拒绝结果</td>
+<td>原commandId、内容摘要、作用域、是否终态、是否已耐久禁止执行、原因</td>
+<td>终态REJECTED不复活；非终态CHANNEL_BUSY不退预留；非法报文不得覆盖合法ID</td>
+</tr>
+<tr>
+<td>异常同步</td>
+<td>localIncidentId及唯一作用域、原任务／回执、物体引用、实际位置、发现时间可信度、caseId映射与同步状态</td>
+<td>caseId创建前可空；禁止空值伪造为已派单；重复同步不新建第二工单／第二物体</td>
+</tr>
+<tr>
+<td>ReconcileTask</td>
+<td>reconcileRequestId、expectedBusinessResultVersion、内容摘要、证据和授权</td>
+<td>幂等重放、内容冲突、业务版本冲突分开返回；与自动事件处理共用事务裁定</td>
+</tr>
+<tr>
+<td>业务结果确认／查询</td>
+<td>应用确认的appliedBusinessResultVersion；查询／通知的当前businessResultVersion及完整业务结果</td>
+<td>与柜端taskStateVersion分离；较旧结果不回滚人工修订；APPLIED不等于可复用通道</td>
+</tr>
+</tbody></table></div>
+<p>D18签核时同步schema、空值及错误语义、版本协商、耐久数据格式、黄金报文和恢复用例；不支持本补充能力的旧固件／服务端不得按推测字段值进入对应自动流程。安全停机不依赖接口响应。T13新增LR子场景全部待联调实测。</p>
+
 </article></main></body></html>

@@ -1,0 +1,74 @@
+{
+  "date": "2026-09-20",
+  "baseline_commit": "586211c272cb0d90b741f9eb1e6c559a90f1b310",
+  "evidence_level": "文档桌面推演及静态核查；不调用Liveo或设备",
+  "review_rounds": 10,
+  "logic_contract_gaps": 4,
+  "planning_wording_corrections": 1,
+  "new_acceptance_subcases": 8,
+  "new_acceptance_execution_status": "全部未执行",
+  "protected_model_image_files": 179,
+  "protected_model_image_changes": [],
+  "historical_validation_files_preserved": 19,
+  "changed_since_this_round_start": [
+    "文件目录.html",
+    "文件目录.md",
+    "README.html",
+    "README.md",
+    "docs/09_设备协议与联调契约.html",
+    "docs/22_固定模型下的系统集成审查与工程补充.md",
+    "docs/README_从这里开始.md",
+    "docs/16_运营维护与故障处理.md",
+    "docs/index.html",
+    "docs/阅读总览.html",
+    "docs/21_端到端逻辑闭环与验收矩阵.md",
+    "docs/21_端到端逻辑闭环与验收矩阵.html",
+    "docs/16_运营维护与故障处理.html",
+    "docs/09_设备协议与联调契约.md",
+    "docs/08_Liveo平台集成与业务状态.html",
+    "docs/22_固定模型下的系统集成审查与工程补充.html",
+    "docs/README_从这里开始.html",
+    "docs/08_Liveo平台集成与业务状态.md",
+    "docs/19_实施任务与责任分工.md",
+    "docs/19_实施任务与责任分工.html",
+    "docs/执行表单/T14_异常工单与实物交接.html",
+    "docs/执行表单/T13_闭环逐案验收.md",
+    "docs/执行表单/T13_闭环逐案验收.html",
+    "docs/执行表单/T14_异常工单与实物交接.md"
+  ],
+  "checks": {
+    "git_diff_check": "通过",
+    "new_section_md_html_headings": "通过",
+    "C33_C44_html_table": "通过",
+    "ten_rounds_and_eight_subcases": "通过",
+    "changed_chapter_number_sequence": "通过"
+  },
+  "browser": {
+    "pages": [
+      "23_十轮端到端逻辑复核与修订.html",
+      "21_端到端逻辑闭环与验收矩阵.html"
+    ],
+    "new_report_tables": 2,
+    "round_rows": 10,
+    "acceptance_rows": 8,
+    "C33_rendered_as_table": true,
+    "navigation_21_to_23": "通过",
+    "viewport_width": 1280,
+    "document_width": 1280,
+    "console_errors": 0,
+    "screenshot_review": "首屏可读，无页面横向溢出",
+    "screenshot_local_evidence": "/tmp/towel-ten-pass-20260920/.playwright-cli/page-2026-09-19T20-48-30-833Z.png"
+  },
+  "local_links": {
+    "checked_files": 40,
+    "local_references": 4784,
+    "errors": []
+  },
+  "implementation_and_hardware_validation": "未执行",
+  "commit_push": "未执行",
+  "new_files_this_round": [
+    "docs/23_十轮端到端逻辑复核与修订.md",
+    "docs/23_十轮端到端逻辑复核与修订.html",
+    "docs/验证/2026-09-20_十轮逻辑复核静态核查.json"
+  ]
+}

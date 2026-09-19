@@ -122,4 +122,8 @@
 <p><strong>子模块图｜实施前核验真实接入点</strong></p>
 <p><img src="%E5%9B%BE%E7%89%87/080_08_%E5%AE%9E%E6%96%BD%E5%89%8D%E6%A0%B8%E9%AA%8C%E7%9C%9F%E5%AE%9E%E6%8E%A5%E5%85%A5%E7%82%B9.svg" alt="实施前核验真实接入点"></p>
 <p><em>读图说明：本文是目标设计；未凭文档假设已有Controller、接口或数据表。</em></p>
+<h2 id="8-自动记账与人工处置的交界2026-09-20">8. 自动记账与人工处置的交界（2026-09-20）</h2>
+<p><a href="21_%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%80%BB%E8%BE%91%E9%97%AD%E7%8E%AF%E4%B8%8E%E9%AA%8C%E6%94%B6%E7%9F%A9%E9%98%B5.html">21章第14节</a>细化本章证据链：人工处理遗留物必须先取得柜端耐久维护接管确认；之后S3清空记录为维护证据，不能自动给原住户记借用。接管前已确认取走或先后不明，不能直接改成未交付。</p>
+<p>柜端终态REJECTED须已有耐久禁止执行记录；非终态忙不能退预留。已接任务离线异常用localIncidentId保存，再幂等关联caseId。平台补正与自动事件共享businessResultVersion和事务裁定；人工请求带幂等键及预期版本，旧APPLIED通知不得覆盖较新的工单或业务结论。具体字段见<a href="09_%E8%AE%BE%E5%A4%87%E5%8D%8F%E8%AE%AE%E4%B8%8E%E8%81%94%E8%B0%83%E5%A5%91%E7%BA%A6.html">09章第9节</a>，验收见<a href="23_%E5%8D%81%E8%BD%AE%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%80%BB%E8%BE%91%E5%A4%8D%E6%A0%B8%E4%B8%8E%E4%BF%AE%E8%AE%A2.html">23章</a>。以上仍为目标设计，未核验Liveo实际实现。</p>
+
 </article></main></body></html>

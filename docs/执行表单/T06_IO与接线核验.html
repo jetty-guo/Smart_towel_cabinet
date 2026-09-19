@@ -63,4 +63,69 @@
 <li><input disabled="" type="checkbox"> 证书身份与柜体序列号一致；切网保持同一clientId和活动任务。</li>
 <li><input disabled="" type="checkbox"> 网络失败不影响本地安全停止；继电器不做高频PWM。</li>
 </ul>
+<h3 id="2026-09-19逐线记录与执行件安全状态">2026-09-19｜逐线记录与执行件安全状态</h3>
+<p>依据<a href="../22_%E5%9B%BA%E5%AE%9A%E6%A8%A1%E5%9E%8B%E4%B8%8B%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E5%AE%A1%E6%9F%A5%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%A1%A5%E5%85%85.html">22章第6节</a>。原S0—L1为功能组；每个实际独立信号复制下列记录一次，不按一个组名只占一个DI计算。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>实际记录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>唯一信号号／机械模块／器件料号及版本</td>
+<td></td>
+</tr>
+<tr>
+<td>电气图号/页码／CAD安装位置引用</td>
+<td></td>
+</tr>
+<tr>
+<td>发送端连接器/针脚 → 接收端连接器/针脚／线号</td>
+<td></td>
+</tr>
+<tr>
+<td>DI/DO/模拟/高速脉冲/总线类型；量程、单位、允许电平及接地/隔离依据</td>
+<td></td>
+</tr>
+<tr>
+<td>正常物理含义／有效电平／上电及CPU复位默认输出</td>
+<td></td>
+</tr>
+<tr>
+<td>断线、短路、卡死、矛盾反馈及失电的可检测性与处理</td>
+<td></td>
+</tr>
+<tr>
+<td>采样、过滤、驱动响应、最大停止时间/停距及批准依据</td>
+<td></td>
+</tr>
+<tr>
+<td>真值刺激、仪器、实测结果、日志/视频、检查人及复验版本</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<p>分别核对R03/R04在位和容量判据、回收入口/转移/选路反馈，以及M1/M2/H07和回收执行输出。未选用编码器、电流或积液监测时，说明替代证据及批准人，不填写虚拟针脚。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>每个执行件单列</th>
+<th>正常状态</th>
+<th>失电/欠压状态</th>
+<th>CPU故障/门开状态</th>
+<th>机械保持和反馈依据</th>
+<th>恢复条件及实测证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>待填写实际执行件编号</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<p>逐一覆盖M1、M2、H07及实际采用的回收入口、转移、分流执行件。不能统一填“断电开门”或“输出OFF即安全”。本表未签核前仍不是接线许可或安全通过证明。</p>
+
 </article></main></body></html>
